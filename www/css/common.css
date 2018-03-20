@@ -1,0 +1,28 @@
+div{
+	float:left;
+   -moz-box-sizing:    border-box;
+   -webkit-box-sizing: border-box;
+    box-sizing:        border-box;	
+}
+
+	#login_parttimejob { margin-left: 0%; width: 100%; margin-right: 0%; height: 7%; /* background:#ff0000; */ }
+	#login_images { margin-left: 0%; width: 100%; margin-right: 0%; height: 50%; } 
+	#login_images_text1 { margin-top: -23%; margin-left: 5%; width: 90%; margin-right: 5%; height: 6%; position: relative;} 
+	#login_images_text2 { margin-top: -16%; margin-left: 5%; width: 90%; margin-right: 5%; height: 6%; position: relative;} 
+	#login_images_red { margin-top: -8%; margin-left: 35%; width: 30%; margin-right: 35%; height: 5%; position: relative;} 
+	#login_buttons { margin-top:3%; margin-left: 0%; width: 100%; margin-right: 0%; height: 40%; }
+	.login_button { margin-top: 2%; margin-left: 12%; width: 76%; margin-right: 12%; height: 20%; }
+
+	#main_ptjob_MenuSlide{ margin-top:3%; margin-left: 0%; width: 100%; margin-right: 0%; height: 35%; }
+	#main_ptjob_MenuFixed{ margin-top:1%; margin-left: 2%; width: 96%; margin-right: 2%; height: 60%; }
+	.main_ptjob_MenuFixed_Container{ margin-top:2%; margin-left: 0%; width: 100%; margin-right: 0%; height: 31%; }
+	.main_ptjob_MenuFixed_Short{ margin-top:0%; margin-left: 1%; width: 30%; margin-right: 1%; height: 100%; }
+	.main_ptjob_MenuFixed_Long{ margin-top:0%; margin-left: 1%; width: 66%; margin-right: 1%; height: 100%; }
+	
+
+	
+/*
+@media screen and (max-width:479px){}
+@media screen and (min-width:480px) and (max-width:719px){}
+@media screen and (min-width:720px){}
+*/

@@ -1,0 +1,164 @@
+<ion-view ng-init="pdc1.init()" hide-nav-bar="true">
+
+    <div class="bar bar-header bar-positive" id="map_header">
+        <button class="button" ng-click="pdc1.getPrevCache()">Cancel</button>
+        <h1 class="title"><span ng-click="goHome()">goRilla</span></h1>
+         <button class="button" ng-click="clearCache()">Reset</button>
+    </div>
+
+    <ion-content class="jobsearch-has-subheader normal-header btn-footer">
+        <div class="content-box">
+
+
+            <h5 class="sub-title">Posting a Job</h5>
+
+            <div>
+                <!--<img src={{posting.stepone}} style="width:35px;" /> -->
+                <div class="postjobStep">
+                    <div class="divTable" style="border: none;">
+                        <div class="divRow">
+                            <div class="divCell divcellx5">
+                                <div>
+                                    <div class="stepImg">
+                                        <img src="img/icon_circle_orange.png" style="width:40px;" />
+                                        <div class="stepOne">
+                                            <font color="#ffffff" style="">1</font>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="divCell divcellx5">
+                                <div>
+                                    <div class="stepImg">
+                                        <img src="img/icon_circle_yellow.png" style="width:40px;" />
+                                        <div class="stepOne">
+                                            <font color="#ccc" style="">2</font>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="divCell divcellx5">
+                                <div>
+                                    <div class="stepImg">
+                                        <img src="img/icon_circle_yellow.png" style="width:40px;" />
+                                        <div class="stepOne">
+                                            <font color="#ccc" style="">3</font>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="divCell divcellx5">
+                                <div>
+                                    <div class="stepImg">
+                                        <img src="img/icon_circle_yellow.png" style="width:40px;" />
+                                        <div class="stepOne">
+                                            <font color="#ccc" style="">4</font>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="divCell divcellx5">
+                                <div>
+                                    <div class="stepImg">
+                                        <img src="img/icon_circle_yellow.png" style="width:40px;" />
+                                        <div class="stepOne">
+                                            <font color="#ccc" style="">5</font>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+
+            <h5 class="sub-title sub">Basic Information</h5>
+            <div class="input-box">
+                <div>
+                    <label class="item item-input input-type1">
+			  <span class="input-label">Company</span>
+			  <input type="text" ng-model="posting.stepone.name" select-on-click ng-change="pdc1.postingChanged()" >
+			</label>
+                </div>
+                <div>
+                    <label class="item item-input input-type1">
+			  <span class="input-label">Phone</span>
+			  <input type="tel" ng-model="posting.stepone.phone" select-on-click ng-change="pdc1.postingChanged()">
+			</label>
+                </div>
+                <div>
+
+                    <div class="item item-input item-icon-right input-type1">
+                        <span class="input-label">Location</span>
+                        <form>
+                            <img src="../../img/icon-target.png" style="width: 20px; height: 20px; margin-right: 8px; margin-top: 8px; float: left" ng-click="pdc1.centerOnMe()">
+                            <div class="form-group right">
+                                <input vs-google-autocomplete ng-model="posting.stepone.fulladdress" vs-street-number="autoaddress.streetNumber" vs-street="autoaddress.street" vs-city="autoaddress.city" vs-state="autoaddress.state" vs-country="autoaddress.country" vs-post-code="autoaddress.postal" vs-latitude="autoaddress.lat" vs-longitude="autoaddress.long" type="text" name="address" id="address" class="form-control item-text-wrap" placeholder="Enter address" select-on-click focus-on="locationSelected" ng-focus="pdc1.disableTap($event)">
+                            </div>
+                        </form>
+
+                    </div>
+                </div>
+                <div ng-if="autoaddress.city">
+                    <div class="item item-input item-icon-right input-type1 locationInfo">
+                        <span class="input-label"></span> {{autoaddress.city}}, {{autoaddress.state}} {{autoaddress.postal}}
+
+                    </div>
+                </div>
+                <div ng-if="!autoaddress.city">
+                    <div class="item item-input item-icon-right input-type1">
+                        <span class="input-label">&nbsp;</span> {{posting.stepone.citytag}} {{posting.stepone.postal}}
+
+                    </div>
+                </div>
+                <div id="map" class="locationmap" data-tap-disabled="true"></div>
+                <div style="height:20px;">
+                </div>
+                <div>
+                    <div class="item item-input input-type1">
+                        <span class="input-label">Unit</span>
+                        <input type="text" ng-model="posting.stepone.unit" placeholder="Enter applicable unit #" select-on-click/>
+                    </div>
+                </div>
+
+
+            </div>
+
+            <h5 class="sub-title sub">Upload Photo</h5>
+            <div class="input-box">
+                <div class="photoUpload">
+                    <img src="img/camera_small.png" ng-click="pdc1.addCompanyPhoto()" />
+                </div>
+                <div style="height: 200px;">
+                    <ion-slide-box delegate-handle="main" active-slide="activeSlide" on-slide-changed="pdc1.slideChanged()">
+                        <ion-slide ng-repeat="photo in posting.stepone.workphotos">
+                            <div class="card2">
+
+                                <div class="delete-photo-icon" ng-click="pdc1.deletePhoto($index)">
+                                    <i class="ion-close-round"></i>
+                                </div>
+                                <div class="gorilla-profile">
+                                    <img id="profile-image" data-ng-src="{{photo.image}}" ng-click="pdc1.openImage(photo.image)" />
+                                </div>
+
+                            </div>
+                        </ion-slide>
+                    </ion-slide-box>
+                </div>
+
+            </div>
+        </div>
+    </ion-content>
+
+    <!-- 푸터 버튼형 -->
+
+    <ion-footer-bar class="footer-bar-custom">
+
+        <div class="stepbtn stepbtn-off" style="width: calc(50% - 5px); margin-right: 10px;"><a style="" ng-click="">Back</a></div>
+
+        <div class="stepbtn stepbtn-active" style="width: calc(50% - 5px);"><a style="" ng-click="pdc1.saveStep('1')">Next</a></div>
+    </ion-footer-bar>
+
+
+</ion-view>

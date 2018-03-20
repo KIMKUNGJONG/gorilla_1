@@ -1,0 +1,80 @@
+<ion-view  hide-nav-bar="true" ng-init="init()">
+
+  <ion-header-bar class="bar search-bar-bcg">
+    <div class="item-input">
+      <input type="text" readonly="readonly" class="ion-autocomplete"
+                             placeholder="Evaluate Applicant" />
+      <!--<i class="icon-small icon ion-gorilla-empty" ></i>
+      <i class="icon-small icon ion-gorilla-empty" ></i>
+      <i class="icon-small icon ion-gorilla-empty" ></i>-->
+      <span>{{post.title}} - {{applicant.name}}</span>
+      <i class="icon-small icon ion-gorilla-empty" ></i>
+    </div>
+  </ion-header-bar>
+  <ion-floating-menu menu-open-icon="ion-arrow-shrink" menu-icon="ion-ios-more" menu-open-color="#2AC9AA" menu-color="#f79429">
+    <!--<ion-floating-item icon="ion-ios-refresh-empty" click="dc.get_userCVList()"></ion-floating-item>-->
+
+    <ion-floating-item icon="ion-thumbsdown" click="dropApplicant()" text="Drop"></ion-floating-item>
+    <ion-floating-item ng-if="nextinterview" icon="ion-thumbsup" click="notifyApplicant()" text="Pass"></ion-floating-item>
+    <ion-floating-item ng-if="!nextinterview" icon="ion-thumbsup" click="notifyApplicant()" text="Job Offer"></ion-floating-item>
+    <ion-floating-item icon="ion-edit" click="writeEvaluation()" text="Save"></ion-floating-item>
+    <ion-floating-item icon="ion-ios-undo" click="goBack()"></ion-floating-item>
+  </ion-floating-menu>
+  <ion-content class="jobsearch-has-subheader">
+    <div ng-if="interview.type == '5001'">
+    <div class="item" >
+         <span class="input-label">Deadline:
+        {{endtime| date: "yyyy-MM-dd HH:mm"}}</span>
+    </div>
+
+    <div class="item">
+        <span class="input-label" style="font-weight: bold;">{{interview.name}} Answers</span>
+    </div>
+    <ion-list class="animate-ripple"
+              can-swipe=true
+              show-reorder=false>
+      <ion-item ng-repeat="answer in answers" style="border-color: transparent;">
+        <span ng-if="answer.no==1" class="input-label">Submitted on:
+       {{answer.updated| date: "yyyy-MM-dd HH:mm"}}</span>
+        <div class="list card" style="margin-bottom: 10px;">
+
+          <label class="item item-input item-floating-label">
+           <span class="input-label">Q {{answer.no}}: {{answer.question}}</span>
+            <input type="text" placeholder="Q {{answer.no}}: {{answer.question}}" ng-model="answer.answer">
+          </label>
+
+        </div>
+      </ion-item>
+    </ion-list>
+</div>
+<div ng-if="interview.type != '5001'">
+<div class="item" >
+     <span class="input-label">Scheduled date:
+    {{starttime| date: "yyyy-MM-dd HH:mm"}} - {{endtime| date: "yyyy-MM-dd HH:mm"}}</span>
+</div>
+
+</div>
+    <div class="item">
+      Score
+      <div ng-if="carouselReady">
+      <morph-carousel data-items="items" on-selected="eval.score" show-value="number"></morph-carousel>
+    </div>
+    </div>
+
+    <div>
+      <label class="item item-input">
+        <textarea ng-model="eval.note" rows="5" select-on-click style="border-style: inset;border-width: 1px; margin-left: -7px;"></textarea>
+      </label>
+    </div>
+  </ion-content>
+
+  <ion-footer-bar class="login-bar-bcg">
+    <div class="buttons">
+    <button class="button icon ion-home" ng-click="goHome()"></button>
+    <button class="button icon ion-android-mail" ng-click="gotoMessage()"></button>
+    <!--<button class="button icon ion-settings" ng-click="goSetting()"></button>-->
+    <button class="button icon ion-gorilla-empty"></button>
+    </div>
+  </ion-footer-bar>
+
+  </ion-view>

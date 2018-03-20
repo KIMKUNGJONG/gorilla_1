@@ -1,0 +1,37 @@
+<ion-view hide-nav-bar="true">
+    <!--<ion-nav-title>
+    <span style="color:white;">Job Search</span>
+  </ion-nav-title>
+  <ion-nav-buttons side="right">
+    <a class="icon-right ion-navigate" ng-click="centerOnMe()" style="color:white; font-size: 25px; margin-top: 5px; margin-right: 10px;"></a>
+    <a class="icon-right ion-refresh" ng-click="refreshData()" style="color:white; font-size: 25px; margin-top: 5px; margin-right: 10px;"></a>
+  </ion-nav-buttons>-->
+    <!--- 헤더 + 검색 --->
+    <div class="bar bar-header bar-positive" id="map_header">
+        <button class="button" ng-click="$ionicGoBack()">Back</button>
+        <h1 class="title"><span ng-click="goHome()">goRilla</span></h1>
+        <button class="button-icon" ng-click="gotoMessage()"><img src="../../img/icon_alarm.png"></button>
+    </div>
+    <div class="bar bar-header bar-positive sub-header">
+        <div class="sub-input"> <span><img src="../../img/icon-search.png" /></span>
+            <input ion-autocomplete type="text" readonly="readonly" class="sub-search" autocomplete="off" ng-model="filter.searchValue" item-value-key="name" item-view-value-key="view" items-method="getSkillTags(query)" items-method-value-key="items" cancel-button-clicked-method="cancelButtonClickedMethod(callback)" placeholder="Searching skill..." external-model="externalModel" model-to-item-method="modelToItemMethod(modelValue)" ng-change="postingChanged()" /> <span ng-click="clearSearch()" class="right" style="top: 7px;"><img src="../../img/icon-cancel.png" /></span></div> <span style="position: absolute; right: 45px;" class="icon_filter" ng-click="openFilter()"></span><i style="position: absolute; right: 17px;" ng-if=false class="icon_changeMode" ng-click="changeMode()"></i>
+        <div style="position: absolute; right: 17px;" ng-if=true class="icon_changeMode" ng-click="changeMode()"></div>
+    </div>
+
+    <ion-content class="jobsearch-has-subheader">
+        <div class="map_wrapper">
+            <div id="map" class="fullmap" data-tap-disabled="true"></div>
+            <div class="over_map"><span class="badge badge-assertive map_count"><b>{{resultCnt}}</b> Jobs found</span>
+                <i class="ion-refresh map_action_icon" ng-click="mapReset()"></i></div>
+        </div>
+    </ion-content>
+    <!--
+  <ion-footer-bar class="login-bar-bcg">
+    <div class="buttons">
+    <button class="button icon ion-home" ng-click="goHome()"></button>
+    <button class="button icon ion-android-mail" ng-click="gotoMessage()"></button>
+    <button class="button icon ion-settings" ng-click="goSetting()"></button>
+    <button class="button icon ion-gorilla-empty"></button>
+    </div>
+  </ion-footer-bar>
+--></ion-view>

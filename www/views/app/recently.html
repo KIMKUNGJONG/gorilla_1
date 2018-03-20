@@ -1,0 +1,71 @@
+<ion-view hide-nav-bar="true">
+    <!-- header -->
+    <div class="bar bar-header bar-positive" id="map_header">
+        <button class="button" ng-click="$ionicGoBack()">Back</button>
+        <h1 class="title-text" style="position: relative; right: 15px"><span ng-click="goHome()">Recently Viewed</span></h1>
+        <button class="button-icon" ng-click="gotoMessage()"><img src="../../img/icon_alarm.png"></button>
+    </div>
+  
+
+	  <ion-content class="jobsearch-has-subheader normal-header">
+
+        <div class="item-input" style="margin-bottom: 5px;">
+            <div class="jobFind"><img src="../../img/check.png">
+                <span class="input-label" style="font-weight: 400; color: #666; width: 70%; display: inline-block; text-align: left"><b>{{searches.length}}</b> Jobs found </span>
+                <img src="img/icon_list.png" style="width:25px; float: right; right: 7px;" ng-click="openPopover($event)" />
+            </div>
+        </div>
+        <div class="recsntlyDiv">
+            <div style="height:5px;"></div>
+            <div>
+                <div style="float:left;margin-left:20px;">
+                    <div style="margin-bottom:2px;font-weight:bold; font-size: 18px; color: #222;">Posting Title</div>
+                    <div style="margin-bottom:5px;font-weight:bold; font-size: 15px; color: #555;">Company – City, Province</div>
+                    <div style="text-align:center;margin-bottom:10px;margin-top:10px;">
+                        <a href="#/app/employInfo" style="text-decoration: none;">
+                            <div class="recentiyBt" style="color:#f79429;">Cashire</div>
+                        </a>
+                    </div>
+                    <div style="margin-bottom:10px; font-size: 12px; color: #666;"><span style="font-weight:bold;">5 Days ago</span>&nbsp;&nbsp;<img src="img/icon_SearchJobsNearMe2.png" style="width:18px; font-size: 12px; color: #666; position: relative; top: 5px;" /> 10.1 Km</div>
+                </div>
+                <div style="width:10%; float:right;"><img src="img/icon_star.png" style="width: 25px;" /></div>
+            </div>
+            <div style="height:5px;"></div>
+            <div>
+                <div style="padding: 0 20px;  float:left;">
+                    <div class="button button-small button-outline button-positive">New</div>
+                    <div class="button button-small button-outline button-positive">External</div>
+                    <div class="button button-small button-outline button-positive">Popular</div>
+                    <div class="button button-small button-outline button-positive">Always</div>
+                    <div class="button button-small button-outline button-positive">Applied</div>
+                </div>
+            </div>
+        </div>
+        <div class="recsntlyDiv">
+            <div style="height:5px;"></div>
+            <div>
+                <div style="float:left;margin-left:20px;">
+                    <div style="margin-bottom:2px;font-weight:bold; font-size: 18px; color: #222;">Posting Title</div>
+                    <div style="margin-bottom:5px;font-weight:bold; font-size: 15px; color: #555;">Company – City, Province</div>
+                    <div style="text-align:center;margin-bottom:10px;margin-top:10px;">
+                        <a href="#/app/employInfo" style="text-decoration: none;">
+                            <div class="recentiyBt" style="color:#f79429;">Cashire</div>
+                        </a>
+                    </div>
+                    <div style="margin-bottom:10px; font-size: 12px; color: #666;"><span style="font-weight:bold;">5 Days ago</span>&nbsp;&nbsp;<img src="img/icon_SearchJobsNearMe2.png" style="width:18px; font-size: 12px; color: #666; position: relative; top: 5px;" /> 10.1 Km</div>
+                </div>
+                <div style="width:10%; float:right;"><img src="img/icon_star.png" style="width: 25px;" /></div>
+            </div>
+            <div style="height:5px;"></div>
+            <div>
+                <div style="padding: 0 20px;  float:left;">
+                    <div class="button button-small button-outline button-positive">New</div>
+                    <div class="button button-small button-outline button-positive">External</div>
+                    <div class="button button-small button-outline button-positive">Popular</div>
+                    <div class="button button-small button-outline button-positive">Always</div>
+                    <div class="button button-small button-outline button-positive">Applied</div>
+                </div>
+            </div>
+        </div>
+    </ion-content>
+</ion-view>

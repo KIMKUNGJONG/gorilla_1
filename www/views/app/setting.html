@@ -1,0 +1,24 @@
+    <ion-view ng-init="init()" hide-nav-bar="true">
+
+    <!-- header -->
+    <div class="bar bar-header bar-positive" id="map_header">
+        <button class="button" ng-click="goBack()">Back</button>
+        <h1 class="title"><span ng-click="goHome()">Setting</span></h1>
+    </div>
+ 
+  <ion-content style="background: #f7f7f7;">
+    <ul class="list setting">
+        <div class="item item-divider">알림설정</div>
+        <ion-toggle ng-model="airplaneMode" toggle-class="toggle-calm">알림 수신</ion-toggle>
+        <ion-toggle ng-model="wifi" toggle-class="toggle-positive">공지 알림</ion-toggle>
+        
+        <div class="item item-divider">위치설정</div>
+        <ion-checkbox ng-model="checkOpt1">GPS 켜기</ion-checkbox>
+    </ul> 
+  </ion-content>
+        
+   <ion-footer-bar class="footer-bar-custom">
+
+        <div class="stepbtn stepbtn-active" style="width: 100%;"><a href="#" style="" ng-click="">확인</a></div>
+    </ion-footer-bar>        
+</ion-view>

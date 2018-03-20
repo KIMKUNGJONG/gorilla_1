@@ -1,0 +1,48 @@
+<ion-view ng-init="init()" hide-nav-bar="true">
+
+        <!-- header -->
+    <div class="bar bar-header bar-positive" id="map_header">
+        <button class="button" ng-click="$ionicGoBack()">Back</button>
+        <h1 class="title"><span ng-click="goHome()">goRilla</span></h1>
+        <button class="button-icon" ng-click="getMessagesLatest()"><img src="../../img/icon-refresh.png" style="width: 18px; height: 18px;"></button>
+    </div>
+
+
+  <ion-content class="jobsearch-has-subheader normal-header">
+    <!--<ion-list class="menulist animate-ripple">
+      <ion-item ng-repeat="x in data.submenu" class="item ink item-icon-left item-icon-right" ui-sref="{{x.state}}">
+        <i class="icon {{x.icon}}"></i>
+        {{x.title}}
+        <i class="icon ion-ios-arrow-right"></i>
+      </ion-item>
+    </ion-list>-->
+
+    <ion-list class="menulist animate-ripple">
+      <ion-item ng-repeat="message in messages"
+              class="item ink item-icon-right item-text-wrap sysm-list">
+
+                      <ionic-letter-avatar ng-if="message.state=='app.scheduleNegoInterview'" data="S" fontsize="12" height="20" width="20" shape="round" charcount="1"></ionic-letter-avatar>
+                      <ionic-letter-avatar ng-if="message.state=='app.answerApp'" data="A" fontsize="12" height="20" width="20" shape="round" charcount="1"></ionic-letter-avatar>
+                      <ionic-letter-avatar ng-if="message.state=='app.postDetail'" data="P" fontsize="12" height="20" width="20" shape="round" charcount="1"></ionic-letter-avatar>
+                      {{message.title}}
+                      <i ng-if="(message.status=='1301')" class="icon-small icon ion-android-notifications-none assertive"></i>
+                      <!--<span style="font-weight: bold; font-size:8px;" >{{message.created | date:'yyyy-MM-dd HH:mm' }} </span>
+                      <!--<span class="item-text-wrap" style="font-size:12px;"><br>{{message.message}}</span>-->
+
+                  <ion-option-button class="option-btn"
+                                     ng-click="openMessage(message)">
+                    Open
+                  </ion-option-button>
+
+                  <ion-option-button class="option-btn option-del"
+                                     ng-click="deleteMessage(message, $index)">
+                    Delete
+                  </ion-option-button>
+      </ion-item>
+    </ion-list>
+
+  </ion-content>
+
+
+
+</ion-view>

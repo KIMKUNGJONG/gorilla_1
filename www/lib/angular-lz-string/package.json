@@ -1,0 +1,40 @@
+{
+  "name": "angular-lz-string",
+  "version": "1.0.5",
+  "license": "WTFPL",
+  "description": "Angular wrapper for lz-string, an LZ-based compression algorithm",
+  "homepage": "http://pieroxy.net/blog/pages/lz-string/index.html",
+  "keywords": [
+    "lz",
+    "compression",
+    "string"
+  ],
+  "main": "angular-lz-string.js",
+  "scripts": {
+    "test": "./node_modules/karma/bin/karma start --single-run --browsers PhantomJS,Firefox tests/karma.conf.js",
+    "test-mac-all": "./node_modules/karma/bin/karma start --single-run --browsers Firefox,Chrome,Safari,PhantomJS,ChromeCanary,Opera tests/karma.conf.js"
+  },
+  "devDependencies": {
+    "angular": "^1.5.3",
+    "angular-mocks": "^1.5.3",
+    "jasmine-core": "^2.4.1",
+    "karma": "^0.13.22",
+    "karma-chrome-launcher": "^0.2.3",
+    "karma-firefox-launcher": "~0.1.7",
+    "karma-jasmine": "^0.3.8",
+    "karma-opera-launcher": "^0.3.0",
+    "karma-phantomjs-launcher": "~1.0.0",
+    "karma-safari-launcher": "^0.1.1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/carlansley/angular-lz-string.git"
+  },
+  "directories": {
+    "test": "tests"
+  },
+  "bugs": {
+    "url": "https://github.com/carlansley/angular-lz-string/issues"
+  },
+  "author": "Carl Ansley <carlansley@gmail.com>"
+}

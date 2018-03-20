@@ -1,0 +1,61 @@
+<ion-view  hide-nav-bar="true" ng-init="init()">
+
+  <ion-header-bar class="bar search-bar-bcg">
+    <div class="item-input">
+      <input type="text" readonly="readonly" class="ion-autocomplete"
+                             placeholder="Confirm Interview Schedule" />
+      <!--<i class="icon-small icon ion-gorilla-empty" ></i>
+      <i class="icon-small icon ion-gorilla-empty" ></i>
+      <i class="icon-small icon ion-gorilla-empty" ></i>-->
+      <span>{{post.title}}</span>
+      <i class="icon-small icon ion-gorilla-empty"></i>
+    </div>
+  </ion-header-bar>
+  <ion-floating-menu menu-open-icon="ion-arrow-shrink" menu-icon="ion-ios-more" menu-open-color="#2AC9AA" menu-color="#f79429">
+    <ion-floating-item icon="ion-thumbsdown" click="rejectSchedule()" text="Reject All"></ion-floating-item>
+    <ion-floating-item icon="ion-thumbsup" click="acceptSchedule()" text="Accept"></ion-floating-item>
+    <ion-floating-item icon="ion-ios-undo" click="goBack()"></ion-floating-item>
+  </ion-floating-menu>
+  <ion-content class="jobsearch-has-subheader">
+
+          <div ng-if="timeslot.closing" class="item item-icon-left" ion-datetime-picker only-valid="{'after': 'today', 'inclusive': true}" ng-model="timeslot.closing">
+              <i class="icon ion-ios-calendar-outline positive"></i>
+               <span class="input-label">Deadline:
+              {{timeslot.closing| date: "yyyy-MM-dd HH"}}</span>
+          </div>
+
+          <div class="item item-icon-left">
+              <i class="icon {{interview.icon}}"></i>
+        		  <span class="input-label" style="font-weight: bold;">{{interview.name}}</span>
+        	</div>
+
+          <ion-radio ng-repeat="schedule in schedules"
+                     ng-value="schedule.schedule_id"
+                     ng-change="timeslotChange(schedule)"
+                     ng-model="selectedtimeslot">
+            {{schedule.starttime| date: 'yyyy-MM-dd H:mm'}} - {{schedule.endtime| date: 'yyyy-MM-dd H:mm'}}
+          </ion-radio>
+          <!--<div class="item item-divider">
+            Serverside, Selected Value: {{ selectedtimeslot }}
+          </div>-->
+
+            <!--<ion-list radio-group [(ngModel)]="selectedtimeslot">
+              <ion-item ng-repeat="schedule in schedules">
+                <ion-label>{{schedule.starttime| date: "yyyy-MM-dd H:mm"}} - {{schedule.endtime| date: "yyyy-MM-dd H:mm"}}</ion-label>
+                <ion-radio value="schedule"></ion-radio>
+              </ion-item>
+
+            </ion-list>-->
+
+  </ion-content>
+
+  <ion-footer-bar class="login-bar-bcg">
+    <div class="buttons">
+    <button class="button icon ion-home" ng-click="goHome()"></button>
+    <button class="button icon ion-android-mail" ng-click="gotoMessage()"></button>
+    <!--<button class="button icon ion-settings" ng-click="goSetting()"></button>-->
+    <button class="button icon ion-gorilla-empty"></button>
+    </div>
+  </ion-footer-bar>
+
+  </ion-view>

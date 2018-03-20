@@ -1,0 +1,151 @@
+<ion-view  hide-nav-bar="true">
+  <!--<ion-nav-buttons side="left">
+    <button menu-toggle="left" class="button button-icon icon ion-navicon" style="color:white;"></button>
+  </ion-nav-buttons>
+  <ion-nav-title>
+    <span style="color:white;">GoRilla</span>
+  </ion-nav-title>-->
+  <ion-header-bar class="main-bar-bcg">
+      <h5>      
+          <div class="main-bar-menu">
+          <button class="menuToggle" style="margin-left: -10px;"><img src="../../img/icon_menu.png"></button>
+          </div><span>goRilla</span>
+          
+          
+            <ul class="main-bar-right">
+      <li><a href="#"><img src="../../img/icon_bookmark.png"></a></li>  
+      <li ><a href="#"><img src="../../img/icon_alarm.png"></a></li>
+  </ul>
+      </h5>
+  </ion-header-bar>
+
+  <ion-content class="main-has-subheader" style="background: #fff;">
+      
+      <!---- 메인 서비스 이미지 ---->
+      <div class="main-img">
+          <img src="../../img/main-img.jpg" />
+      </div>
+      
+      <!---- 메인 서비스 이미지 ---->  
+    <div class="main-menu">
+        <ul>
+            <li><a href="">
+                <img src="../../img/main_applicant.png">
+                Applicant
+                </a>
+            </li>
+            <li><a href="">
+                <img src="../../img/main_viewed.png">
+                View</a>
+            </li>
+            <li><a href=""><img src="../../img/main_matched.png">
+                Matched</a>
+            </li>
+            <li><a href=""><img src="../../img/main_applied.png">
+                Applied</a>
+            </li>
+        </ul>
+    </div>
+
+
+    <!--<div class="list card">
+      <div class="item item-divider">Selected number</div>
+      <div class="item item-body">
+        <div>
+          Number is equal to <b>{{ selectedItem.number }}</b>
+        </div>
+      </div>
+    </div>    -->
+    <!--<ion-scroll zooming="true" direction="x" style="height: 160px;width: 100vw;">
+        <div style="width:1000px;">
+            <div class="divTable" style="background-color: white;border: none;">
+                <div class="divRow">
+                    <div class="divCell2">
+                        <a href="#/app/applicant"><img src="img/applicate.png" style="width:100px;"></a>
+                    </div>
+                    <div class="divCell2">
+                        <a href="#/app/recently"><img src="img/recently.png" style="width:100px;"></a>
+                    </div>
+                    <div class="divCell2">
+                        <a href="#/app/apply"><img src="img/apply.png" style="width:100px;"></a>
+                    </div>
+                    <div class="divCell2">
+                        <a href="#/app/bookmark"><img src="img/applicate.png" style="width:100px;"></a>
+                    </div>
+                    <div class="divCell2">
+                        <a href="#/app/matched"><img src="img/applicate.png" style="width:100px;"></a>
+                    </div>
+                </div>
+                <div class="divRow">
+                    <div class="divCell2"><span style="font-weight:bold;">Applicants</span></div>
+                    <div class="divCell2"><span style="font-weight:bold;">Viewed</span></div>
+                    <div class="divCell2"><span style="font-weight:bold;">Applied</span></div>
+                    <div class="divCell2"><span style="font-weight:bold;">Bookmark</span></div>
+                    <div class="divCell2"><span style="font-weight:bold;">Matched</span></div>
+                </div>
+                <div class="divRow">
+                    <div class="divCell2"><span style="color:#f79429;font-weight:bold;">4</span></div>
+                    <div class="divCell2"><span style="color:#f79429;font-weight:bold;">13</span></div>
+                    <div class="divCell2"><span style="color:#f79429;font-weight:bold;">2</span></div>
+                    <div class="divCell2"><span style="color:#f79429;font-weight:bold;">9</span></div>
+                    <div class="divCell2"><span style="color:#f79429;font-weight:bold;">5</span></div>
+                </div>
+            </div>
+        </div>
+    </ion-scroll>-->
+
+	<div style="background: #fff;">
+		<label class="item item-input main-menu-buttom main-menu-buttom-search" style="border-color: transparent;">
+		  <div ng-if="listmode==true" style="width: 100%;">
+			<a href="#/app/myJobSearchList" style="text-decoration: none;">
+                    <label class="item item-input" style="border-color: transparent;background-color: transparent; width: fit-content; margin:0 auto; padding: 0; ">            
+                <img class="" src="img/search.png" style=""/>
+				  <span class="input-label main-menu-buttom-label" style="">Search for Jobs </span>
+				</label>
+			</a>
+		  </div>
+      <div ng-if="listmode!=true" style="width: 100%;">
+			<a href="#/app/myJobSearchMap" style="text-decoration: none;">
+                <label class="item item-input" style="border-color: transparent;background-color: transparent; width: fit-content; margin:0 auto; padding: 0; ">
+                <img class="" src="img/search.png" style=""/>
+				  <span class="input-label main-menu-buttom-label" style="">Search for Jobs </span>
+                </label>
+			</a>
+		  </div>
+		</label>
+	</div>
+	<div style="background: #fff;">
+		<label class="item item-input main-menu-buttom main-menu-buttom-post" style="border-color: transparent;">
+		  <div style="width: 100%;">
+			<a href="#/app/postJob" style="text-decoration: none;">
+                <label class="item item-input" style="border-color: transparent;background-color: transparent; width: fit-content; margin:0 auto; padding: 0; ">
+				  <img src="img/post.png"  style=""/>
+				  <span class="input-label main-menu-buttom-label" style="">Post a Job</span>
+		</label>
+			</a>
+		  </div>
+		</label>
+	</div>
+
+              <div class="system-msg item-icon-right animated bounceInUp" ng-click="gotoPage(selectedItem)">
+         <img src="../../img/systemMsg.png"> You have <b>{{ selectedItem.count }}</b> messages
+        </div>
+
+  </ion-content>
+    <!--
+  <ion-footer-bar class="login-bar-bcg">
+    <div class="buttons">
+    <button class="button icon ion-navicon-round ion-button menuToggle"></button>
+    <button class="button icon ion-android-mail" ng-click="gotoMessage()"></button>
+
+    <!--<button class="button icon ion-settings" ng-click="goSetting()"></button>-->
+<!--
+    <button class="button icon ion-gorilla-empty"></button>
+    </div>
+-->
+    
+  </ion-footer-bar>
+
+
+
+</ion-view>

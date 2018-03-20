@@ -1,0 +1,16 @@
+        <ion-modal-view>
+        <ion-header-bar class="login-bar-bcg">
+            <h1 class="title">{{title}}</h1>
+            <div class="buttons">
+            <button ng-click="pdc1.modalimg.hide()" class="button button-icon ion-ios-close"></button>
+            </div>
+        </ion-header-bar>
+        <ion-content >
+
+            <ion-scroll max-zoom="5" overflow-scroll="false"  zooming="true" direction="xy" style="width: 90%; height: 80%" class="has-header">
+                    <img data-ng-src="{{image}}" style="float:center;" />
+            </ion-scroll>
+
+        </ion-content>
+
+        </ion-modal-view>

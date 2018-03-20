@@ -1,0 +1,27 @@
+<!--<div class="modal zoom">
+	<button class="button ink button-icon button-clear ion-close" ng-click="closeModal()"></button>
+			<ion-scroll overflow-scroll="false" direction="xy" scrollbar-x="false" scrollbar-y="false" zooming="true" min-zoom="{{zoomMin}}" style="width: 100%; height: 100%" >
+					<div class="img-zoom" style="height: {{screenHeight}}px;">
+						<div style="height: 80px;">
+						</div>
+						<ng-pdf ng-if="pdfUrl"  template-url="views/app/pdfviewer.html" canvasid="pdf"  scale="page-fit"></ng-pdf>
+					</div>
+			</ion-scroll>
+</div>-->
+
+
+<ion-modal-view>
+	<ion-header-bar class="login-bar-bcg">
+			<div class="buttons">
+			<button class="button ink button-icon button-clear ion-close" ng-click="closeModal()"></button>
+		</div>
+	</ion-header-bar>
+<ion-content >
+
+		<div class="img-zoom">
+			<ng-pdf ng-if="pdfUrl"  template-url="views/app/pdfviewer.html" canvasid="pdf"  scale="page-fit"></ng-pdf>
+		</div>
+
+</ion-content>
+
+</ion-modal-view>

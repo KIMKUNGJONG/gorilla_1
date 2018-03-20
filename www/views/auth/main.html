@@ -1,0 +1,74 @@
+<ion-view hide-nav-bar="true">
+    <!--
+
+  <ion-floating-menu is-centered="true" menu-open-icon="ion-arrow-shrink" menu-icon="ion-gorilla-login" menu-open-color="#2AC9AA" menu-color="#f79429">
+    <ion-floating-item icon="ion-social-facebook" click="FBlogin()" text="Facebook" menu-color="#ffffff"></ion-floating-item>
+    <ion-floating-item icon="ion-social-twitter" click="twitterlogin()" text="Twitter"></ion-floating-item>
+    <ion-floating-item icon="ion-social-google" click="googlelogin()" text="Google"></ion-floating-item>
+    <ion-floating-item icon="ion-android-person" click="Guestlogin()" text="Guest"></ion-floating-item>
+  </ion-floating-menu>
+-->
+    <ion-content style="background-color: #fff;">
+
+        <div class="list card login-img">
+            <div class="item item-image">
+                <img ng-src="../../img/login_img.jpg">
+            </div>
+            <div class="guestMode" ng-click="Guestlogin()">Guest mode ></div>
+        </div>
+        
+        <ul class="login-list">
+            <li ng-click="googlelogin()"><img src="../../img/login-google.png"></li>
+            <li ng-click="FBlogin()" ><img src="../../img/login-facebook.png"></li>
+            <li ng-click="twitterlogin()"><img src="../../img/login-twitter.png"></li>
+        </ul>
+
+
+
+        <!--
+            <ion-slide>
+                <div class="list card">
+                    <div class="item item-image">
+                        <img ng-src="img/bg-img.jpg">
+                    </div>
+                </div>
+            </ion-slide>
+            <ion-slide>
+                <div class="list card">
+                    <div class="item item-image">
+                        <img ng-src="img/bg-img.jpg">
+                    </div>
+                </div>
+            </ion-slide>
+            <ion-slide>
+                <div class="list card">
+                    <div class="item item-image">
+                        <img ng-src="img/bg-img.jpg">
+                    </div>
+                </div>
+            </ion-slide>
+-->
+
+        <!--<div style="background-color: #eaeaea;">
+			<div class="loginDiv">
+				<div class="preferred-login">
+					<button class="button icon-left ion-social-facebook button-positive" ng-click="FBlogin()">LogIn with Facebook</button>
+				</div>
+				<div class="preferred-login">
+					<button class="button icon-left ion-social-twitter button-calm" ng-click="twitterlogin()">LogIn with Twitter</button>
+				</div>
+        <div class="preferred-login">
+					<button class="button icon-left ion-social-google button-assertive" ng-click="googlelogin()">LogIn with Google</button>
+				</div>
+        <div class="preferred-login">
+					<button class="button icon-left ion-android-person button-assertive" ng-click="Guestlogin()">LogIn as Guest</button>
+				</div>
+			</div>
+		</div>-->
+        <!--
+    <div id="gorilla-logo-div">
+      <img src="../../img/login_img.jpg" style="height:250px;">
+    </div>
+-->
+    </ion-content>
+</ion-view>

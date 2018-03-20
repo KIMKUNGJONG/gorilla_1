@@ -1,0 +1,101 @@
+<ion-view hide-nav-bar="true" ng-init="init()">
+
+    <!-- header -->
+    <div class="bar bar-header bar-positive" id="map_header">
+        <button class="button" ng-click="$ionicGoBack()">Back</button>
+        <h1 class="title"><span ng-click="goHome()">goRilla</span></h1>
+        <button class="button-icon" ng-click="applyFilter()" style="right: 40px;"><img src="../../img/icon-check.png" style=""></button>
+        <button class="button-icon" ng-click="saveMatched()"><img src="../../img/icon-upload.png" style=""></button>
+    </div>
+
+    <ion-content class="jobsearch-has-subheader normal-header">
+        <div class="content-box">
+
+
+            <h5 class="sub-title">Advanced Search</h5>
+            <div class="input-box">
+                <div ng-if="!filter.useCurrentLoc">
+                    <div class="item item-input item-icon-right input-type1">
+                        <span class="input-label">City</span>
+                        <img src="../../img/icon-target.png" style="width: 20px; height: 20px; margin-right: 5px;" ng-click="getCurrentLocation2()">
+                        <form>
+                            <div class="form-group">
+                                <input vs-google-autocomplete="{ types:['(cities)'] }" ng-model="address.citymodel" type="text" name="city" id="city" vs-city="address.city" vs-state="address.state" vs-latitude="address.latitude" vs-longitude="address.longitude" class="form-control" placeholder="City name" select-on-click ng-focus="disableTap($event)">
+
+                            </div>
+                        </form>
+                    </div>
+
+                </div>
+                <div ng-if="filter.useCurrentLoc">
+                    <div class="item item-input item-icon-right input-type1">
+                        <span class="input-label">City:</span>
+                        <span class="input-label item-text-wrap">{{filter.city}} long:{{filter.longitude}}, lat:{{filter.latitude}}</span>
+
+                        <i class="icon icon-small ion-home" ng-click="getCityLocation()"> </i>
+
+                    </div>
+
+                    <div class="item item-input item-icon-left">
+
+                        <span class="input-label" style="margin-left: 120px;">&nbsp;Distance Within </span>
+                        <select ng-model="filter.distance">
+                   <option ng-repeat="option in filter.distanceoptions"  ng-selected="option.value==filter.distance" value={{option.value}}>{{option.description}}</option>
+                </select>
+                    </div>
+                </div>
+
+                <div>
+                    <label class="item item-input input-type1">
+           <span class="input-label">Skills:</span>
+           <!--<input type="text" ng-model="posting.steptwo.tags" ng-change="postingChanged()">-->
+           <input ion-autocomplete type="text" readonly="readonly" class="ion-autocomplete" autocomplete="off"
+                                  ng-model="filter.searchValue"
+                                  item-value-key="name"
+                                  item-view-value-key="view"
+                                  items-method="getSkillTags(query)"
+                                  items-method-value-key="items"
+                                  placeholder="Searching skill keyword..."
+                                 external-model="externalModel" model-to-item-method="modelToItemMethod(modelValue)"
+                                  ng-change="postingChanged()"/>
+         </label>
+                </div>
+            </div>
+
+
+
+            <!-- only in selected languages -->
+            <h5 class="sub-title sub">Only in selected languages</h5>
+            <div class="input-box">
+                <label class="item input-type1">
+             <ion-toggle ng-model="filter.englishselected" ng-change="postingChanged()" toggle-class="toggle-calm"><img src="img/flag_ca.png" width="40px;" /></ion-toggle>
+             <ion-toggle ng-model="filter.frenchselected" ng-change="postingChanged()" toggle-class="toggle-calm"><img src="img/flag_fr.png" width="40px;" /></ion-toggle>
+             <ion-toggle ng-model="filter.koreanselected" ng-change="postingChanged()" toggle-class="toggle-calm"><img src="img/flag_kr.png" width="40px;" /></ion-toggle>
+             <ion-toggle ng-model="filter.chineseselected" ng-change="postingChanged()" toggle-class="toggle-calm"><img src="img/flag_cn.png" width="40px;" /></ion-toggle>
+     			</label>
+            </div>
+
+
+
+
+
+            <h5 class="sub-title sub">Only in selected languages</h5>
+
+            <div class="input-box">
+                <div>
+                    <ion-toggle ng-model="filter.experiencedonly" ng-change="postingChanged()" toggle-class="toggle-calm"><span class="input-label">Experienced Only</span></ion-toggle>
+                </div>
+
+                <div>
+                    <ion-toggle ng-model="filter.nowhiringonly" ng-change="postingChanged()" toggle-class="toggle-calm"><span class="input-label">Now Hiring Only</span></ion-toggle>
+                </div>
+
+                <div>
+                    <ion-toggle ng-model="filter.gorillaadonly" ng-change="postingChanged()" toggle-class="toggle-calm"><span class="input-label">Gorilla Only</span></ion-toggle>
+                </div>
+
+            </div>
+        </div>
+    </ion-content>
+
+</ion-view>

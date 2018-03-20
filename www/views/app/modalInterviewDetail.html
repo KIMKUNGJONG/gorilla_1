@@ -1,0 +1,55 @@
+        <ion-modal-view>
+          <!--<ion-header-bar>
+              <h1 class="title">{{title}}</h1>
+              <button ng-click="pdc4.modalinterview.hide()" class="ion-android-close"></button>
+          </ion-header-bar>-->
+          <ion-header-bar class="login-bar-bcg">
+              <h1 class="title">{{title}}</h1>
+              <div class="buttons">
+              <button ng-click="dismissInterview()" class="button button-icon ion-ios-close"></button>
+            </div>
+          </ion-header-bar>
+        <ion-content >
+          <ion-slide-box active-slide="activeSlide" on-slide-changed="slideChanged()">
+           <ion-slide ng-repeat="interview in interviews">
+             <div ng-if="(interview.type=='5006') || (interview.type=='5003') || (interview.type=='5001')">
+               <div ng-if="post.hiringtype != '6001'">
+                   <div class="item" style="border-color: transparent;">
+                     <span style="font-weight: bold; font-size:12px;" ng-if="post.closing">{{post.closing | date:'yyyy-MM-dd HH:mm' }} </span>
+                     <span class="alignright" style="font-weight: bold; font-size:12px;" ng-if="post.decisionby">{{post.decisionby | date:'yyyy-MM-dd HH:mm'}}</span>
+                   </div>
+               </div>
+             </div>
+             <div ng-if="(interview.type=='5006')"> <!-- Person -->
+               <div class="item item-input item-icon-right">
+                 <span class="input-label item-text-wrap">Location:</span>
+                 {{interview.fulladdress}}
+                 {{interview.unit}}
+                 {{interview.citytag}} {{interview.postal}}
+                 <i class="icon ion-location" ng-click="openMapLoc(interview.latitude, interview.longitude)"></i>
+               </div>
+
+             </div>
+             <div ng-if="(interview.type=='5001')"> <!-- APP -->
+               <ion-list class="animate-ripple"
+                         can-swipe=true
+                         show-reorder=false>
+                 <ion-item ng-repeat="answer in answers" style="border-color: transparent;">
+                   <span ng-if="answer.no==1" class="input-label">Submitted on:
+                  {{answer.updated| date: "yyyy-MM-dd HH:mm"}}</span>
+                   <div class="list card" style="margin-bottom: 10px;">
+
+                     <label class="item item-input item-floating-label">
+                      <span class="input-label">Q {{answer.no}}: {{answer.question}}</span>
+                       <input type="text" placeholder="Q {{answer.no}}: {{answer.question}}" ng-model="answer.answer">
+                     </label>
+                   </div>
+                 </ion-item>
+               </ion-list>
+             </div>
+           </ion-slide>
+         </ion-slide-box>
+
+        </ion-content>
+
+        </ion-modal-view>

@@ -1,0 +1,154 @@
+<ion-view ng-init="init()" hide-nav-bar="true">
+
+    <!-- header -->
+    <div class="bar bar-header bar-positive" id="map_header">
+        <button class="button" ng-click="goBack()">Back</button>
+        <h1 class="title"><span ng-click="goHome()">goRilla</span></h1>
+        <button class="button-icon" ng-click="refreshData()"><img src="../../img/icon-refresh.png" style="width: 18px; height: 18px;"></button>
+    </div>
+
+    <!--
+  <ion-floating-menu menu-open-icon="ion-arrow-shrink" menu-icon="ion-ios-more" menu-open-color="#2AC9AA" menu-color="#f79429">
+    <ion-floating-item ng-if="isposter" icon="ion-ios-paperplane" ng-click="posterContinue()" text="Continue"></ion-floating-item>
+    <ion-floating-item ng-if="isapplicant && userstatus.userstatus == '1106'" icon="ion-ios-paperplane" ng-click="applicantContinue()" text="Continue"></ion-floating-item>
+    <ion-floating-item ng-if="!isposter && !isapplicant" icon="ion-ios-paperplane" ng-click="applicantApply()" text="Apply"></ion-floating-item>
+  </ion-floating-menu>
+-->
+
+    <ion-content class="normal-header">
+        <div class="content-box">
+
+
+            <h5 class="sub-title">My Schedule</h5>
+            <div class="input-box">
+                <div class="input-type1">
+                    <label class="item">
+			  <span class="item-text-wrap jobTitle" style="font-weight:bold;">{{post.title}}</span>
+			</label>
+                </div>
+                <div class="item input-type1">
+                    <span class="jobDate" ng-if="post.postingdate" style="margin-top: 10px;">{{post.postingdate | date:'yyyy-MM-dd HH:mm' }} </span>
+                    <span class="jobDate" ng-if="post.applicationdeadline">~ {{post.applicationdeadline | date:'yyyy-MM-dd HH:mm'}}</span>
+                </div>
+
+                <div>
+                    <div>
+                        <div class="item item-input item-icon-right input-type1">
+                            <span class="input-label">Company</span>
+                            <span class="input-text">{{post.name}}</span>
+                            <i class="icon ion-images" ng-if="countWorkPhotos>0" ng-click="getCompanyPhoto()"></i>
+                        </div>
+
+                    </div>
+                    <div>
+                        <div class="item item-input item-icon-right input-type1" style="padding-bottom: 20px !important;">
+                            <span class="input-label" style="font-weight:bold;">Location</span>
+                            <span class="item-text-wrap locationInfo">{{post.fulladdress}} {{post.unit}}</span>
+
+                            <!--<i class="icon ion-location" ng-click="openMapLoc(post.latitude, post.longitude)"></i>-->
+                        </div>
+                    </div>
+
+                    <div class="map_wrapper">
+                        <div id="mapdetail" class="locationmap" data-tap-disabled="true"></div>
+                        <div class="over_map ">
+                            <i class="icon ion-location map_action_icon" ng-click="centerOnPost()"></i>
+                            <i class="icon ion-navigate map_action_icon2" ng-click="centerOnMe()"></i>
+
+                        </div>
+                    </div>
+
+                        <div>
+                            <label class="item input-type1">
+        <span class="input-label">Skills</span>
+
+        <button class="button button-small button-outline button-assertive" ng-repeat="skill in tag" ng-if="skill.type!='4004'">{{skill.name}}</button>
+
+      </label>
+                        </div>
+                        <div class="item input-type1">
+                            <label class="">
+  			  <span class="input-label" style="">Languages</span>
+        </label>
+                                                            <div class="input-type1-languges">
+          <img ng-if="language.english" style="width: 40px;" src="img/flag_ca.png" />
+          <img ng-if="language.french" style="width: 40px;" src="img/flag_fr.png" />
+          <img ng-if="language.korean" style="width: 40px;" src="img/flag_kr.png" />
+          <img ng-if="language.chinese" style="width: 40px;" src="img/flag_cn.png" />
+                        </div>
+                    </div>
+
+                    <!--<div>
+      <label class="item">
+        <span class="input-label" style="font-weight:bold;">Additional Info</span>
+      </label>
+    </div>-->
+                    <div ng-if="post.filetype=='3003'">
+                        <!--<ng-pdf ng-if="pdfUrl" template-url="views/app/pdfviewer5.html" canvasid="pdf5"  scale="page-fit"></ng-pdf>-->
+                        <div class="item item-input item-icon-right item-padding">
+                            <div style="float:left;padding-right: 10px;">
+                                <ionic-letter-avatar data="PDF" fontsize="12" height="20" width="20" shape="round" charcount="3"></ionic-letter-avatar>
+                            </div>
+                            <div style="width: 100%; text-align: left; ">
+                                <h2>Additional Info
+                                </h2>
+                                <img src="../../img/icon-plus-gray.png" style="width: 13px; float: right; position: relative; top: 4px;"  ng-click="getAdditionalInfoPDF()" />
+                            </div>
+                        </div>
+
+                    </div>
+                    <div ng-if="post.filetype=='3001'">
+                        <!--<ion-scroll max-zoom="5" overflow-scroll="false"  zooming="true" direction="xy" class="has-header">
+            <img data-ng-src="{{post.content}}" style="float:center;" />
+          </ion-scroll>-->
+                        <div class="item item-input item-icon-right">
+                            <div style="float:left;padding-right: 10px;">
+                                <ionic-letter-avatar data="IMG" fontsize="12" height="20" width="20" shape="round" charcount="3"></ionic-letter-avatar>
+                            </div>
+                            <div>
+                                <h2>Additional Info</h2>
+                            </div>
+                            <i class="icon ion-clipboard" ng-click="getAdditionalInfoIMG()"></i>
+                        </div>
+
+                    </div>
+                    <div ng-if="post.filetype=='3004'">
+                        <!--<label class="item item-input">
+              <textarea ng-model="post.content" rows="10" style="border-style: inset;border-width: 1px; margin-left: -7px;" disabled="true"></textarea>
+            </label>-->
+                        <div class="item item-input item-icon-right">
+                            <div style="float:left;padding-right: 10px;">
+                                <ionic-letter-avatar data="TXT" fontsize="12" height="20" width="20" shape="round" charcount="3"></ionic-letter-avatar>
+                            </div>
+                            <div>
+                                <h2>Additional Info</h2>
+                            </div>
+                            <i class="icon ion-clipboard" ng-click="getAdditionalInfoTXT()"></i>
+                        </div>
+                    </div>
+                </div>                   
+            
+            <h5 class="sub-title sub" style="padding: 10px 20px 5px;"> Interview process</h5>            
+                    <div>
+                        <ion-list class="animate-ripple">
+                            <ion-item ng-repeat="interview in interviews | orderBy:interview.sequence" class="item item-icon-left item-icon-right input-type1" style="height: 30px;">
+                                <!--<i class="icon ion-edit" ng-click="manageInterview(interview)"></i>-->
+                                <i class="icon {{interview.icon}}"></i> <p class="postdetail-p">{{interview.name}}</p>
+                                <i ng-if="isapplicant && ((post.userstatus=='1106')||(post.userstatus=='1107'))" class="icon-small icon ion-android-more-vertical assertive" ng-click="actionForApplicant(interview)"></i>
+                                <i ng-if="isapplicant && !((post.userstatus=='1106')||(post.userstatus=='1107'))" class="icon-small icon ion-android-more-vertical" ng-click="actionForApplicant(interview)"></i>
+                                <i ng-if="isposter" class="icon-small icon ion-android-more-vertical assertive" ng-click="actionForPoster(interview)"></i>
+                                <i ng-if="!isposter && !isapplicant" class="icon-small icon ion-gorilla-empty"></i>
+
+                            </ion-item>
+                        </ion-list>
+
+                    </div>
+                    <div ng-if="post.hiringtype!='6001'" google-chart="Timeline" ng-model="interviewTLData" class="mediumGraph"></div>
+
+                </div>
+            </div>
+        </div>
+    </ion-content>
+
+
+</ion-view>

@@ -1,0 +1,95 @@
+<ion-view ng-init="init()" hide-nav-bar="true">
+  <!--<ion-nav-title>
+    <span style="color:white;">Job Search</span>
+  </ion-nav-title>-->
+    
+
+    <div class="bar bar-header bar-positive" id="map_header">
+        <button class="button" ng-click="goBack()">Back</button>
+        <h1 class="title"><span ng-click="goHome()">goRilla</span></h1>
+        <button class="button-icon" ng-click="doSearch()"><img src="../../img/icon-refresh.png" style="width: 18px; height: 18px;"></button>
+    </div>    
+        
+
+   <ion-content class="jobsearch-has-subheader normal-header">
+
+	<div class="item-input">
+
+		  <span class="input-label" style="font-weight: bold;">{{searches.length}} Jobs found </span>
+		  <div style="position: absolute;right: 15px;top:10px;">
+        <img src="img/icon_list.png" style="width:30px;" ng-click="openPopover($event)"/>
+      </div>
+
+	</div>
+  <ion-list class="animate-ripple"
+            can-swipe=true
+            show-reorder=false>
+    <ion-item ng-repeat="search in searches | orderBy:sortByParam"
+              class="item item-text-wrap">
+              <!--<div ng-if="search.post.userstatus=='1106'">
+                <label style="font-color:red; font-weight: bold; font-size:15px;">{{search.post.title}}</label>
+              </div>-->
+
+              <div class="item item-icon-right" style="border-color: transparent;">
+                <label style="font-weight: bold; font-size:15px; color:blue;">{{search.post.title}}</label>
+
+                <i ng-if="((search.post.status!='8004')&&((search.post.userstatus=='1106')||(search.post.userstatus=='1107')||(search.post.userstatus=='1201')))" class="icon-small icon ion-android-more-vertical assertive" ng-click="actionToApplicant(search)"></i>
+                <i ng-if="!((search.post.status!='8004')&&((search.post.userstatus=='1106')||(search.post.userstatus=='1107')||(search.post.userstatus=='1201')))" class="icon-small icon ion-android-more-vertical" ng-click="actionToApplicant(search)"></i>
+              </div>
+              <!--<div ng-if="search.post.userstatus!='1106'">
+                <label style="font-weight: bold; font-size:15px;">{{search.post.title}}</label>
+              </div>-->
+              <div>
+                <label style="font-weight: bold; font-size:13px;">{{search.post.name}} – {{search.post.citytag}}</label>
+              </div>
+              <div>
+                <span style="font-weight: bold; font-size:12px;" ng-if="search.post.postingdate">{{search.post.postingdate | date:'yyyy-MM-dd HH:mm' }} </span>
+                <span class="alignright" style="font-weight: bold; font-size:12px;" ng-if="search.post.applicationdeadline">{{search.post.applicationdeadline | date:'yyyy-MM-dd HH:mm'}}</span>
+              </div>
+              <div>
+                <span style="font-weight: bold; font-size:12px;" ng-if="search.post.postingdate">{{search.daysago}} days ago</span>
+                <span class="alignright" style="font-weight: bold; font-size:12px;" ng-if="search.post.applicationdeadline">{{search.daysleft}} days to apply</span>
+              </div>
+              <div>
+                <button class="button button-small button-outline button-assertive" ng-repeat="skill in search.tag" ng-if="skill.type!='4004'">{{skill.name}}</button>
+              </div>
+              <div>
+                <img ng-if="search.english" src="img/flag_ca.png" />
+                <img ng-if="search.french" src="img/flag_fr.png" />
+                <img ng-if="search.korean" src="img/flag_kr.png" />
+                <img ng-if="search.chinese" src="img/flag_cn.png" />
+
+                <i class="alignright icon ion-location" ng-click="openMapLoc(search.post.latitude, search.post.longitude)"> {{search.distance}}km away</i>
+
+  	           </div>
+               <div>
+                 <button class="button button-small button-outline button-positive" ng-if="search.post.hiringtype=='6001'">Always</button>
+                 <button class="button button-small button-outline button-positive" ng-if="search.post.bookmarkcount>10">Popular</button>
+                 <button class="button button-small button-outline button-positive" ng-if="search.post.postingtype=='7001'">Gorilla</button>
+                 <button class="button button-small button-outline button-positive" ng-if="search.post.postingtype=='7002'">Extern</button>
+                 <button class="button button-small button-outline button-positive" ng-if="search.post.experienced=='Y'">Exp</button>
+                 <button class="button button-small button-outline button-positive" ng-if="search.post.cvrequired=='Y'">CV</button>
+                 <button class="button button-small button-outline button-positive" ng-if="search.post.isapplicant=='Y'">Applied</button>
+                 <button class="button button-small button-outline button-positive" ng-if="search.post.isbookmarked=='Y'">Bookmarked</button>
+                 <button class="button button-small button-outline button-positive" ng-if="search.post.isposter=='Y'">MyPost</button>
+                 <button class="button button-small button-outline button-positive" ng-if="search.post.isfalsead=='Y'">FalseAd</button>
+                 <button class="button button-small button-outline button-positive" ng-if="search.post.userstatus=='1103'">Out</button>
+                 <button class="button button-small button-outline button-positive" ng-if="search.post.userstatus=='1105'">Closed</button>
+                 <button class="button button-small button-outline button-positive" ng-if="search.post.userstatus=='1104'">Hired</button>
+                 <button class="button button-small button-outline button-positive" ng-if="search.post.userstatus=='1201'">Job Offered</button>
+                 <button class="button button-small button-outline button-positive" ng-if="search.post.userstatus=='1202'">Offer Rejected</button>
+                 <button class="button button-small button-outline button-positive" ng-if="search.post.userstatus=='1203'">Offer Accepted</button>
+                 <button class="button button-small button-outline button-positive" ng-if="search.post.status=='8003'">Closed</button>
+                 <button class="button button-small button-outline button-positive" ng-if="search.post.status=='8004'">Done</button>
+               </div>
+
+    <!--<ion-option-button class="button-positive"
+                       ng-click="openPost(search.post)">
+      Open
+    </ion-option-button>-->
+
+</ion-item>
+</ion-list>
+  </ion-content>
+ 
+</ion-view>

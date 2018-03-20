@@ -1,0 +1,109 @@
+<ion-view ng-init="init()" hide-nav-bar="true">
+    
+    <!-- header -->
+    <div class="bar bar-header bar-positive" id="map_header">
+        <button class="button" ng-click="$ionicGoBack()">Back</button>
+        <h1 class="title-text" style="position: relative; right: 15px;"><span ng-click="goHome()">Interview WrapUp</span></h1>
+        <button class="button-icon" style="right: 45px;" ng-disabled="isToday()" ng-click="getInterviewQuestion()"><img src="../../img/icon-refresh.png" style="width: 18px; height: 18px;"></button>        <button class="button-icon" ng-click="gotoMessage()"><img src="../../img/icon_alarm.png"></button>
+    </div>
+
+
+  <ion-floating-menu menu-open-icon="ion-arrow-shrink" menu-icon="ion-ios-more" menu-open-color="#2AC9AA" menu-color="#f79429">
+    <ion-floating-item ng-if="post.interviewstage < post.interviewcount" icon="ion-thumbsup" click="sendOK()" text="Send OK"></ion-floating-item>
+    <ion-floating-item ng-if="post.interviewstage >= post.interviewcount" icon="ion-thumbsup" click="sendOK()" text="Send Job Offer"></ion-floating-item>
+    <ion-floating-item icon="ion-ios-undo" click="goBack()"></ion-floating-item>
+    <!--<ion-floating-item icon="ion-ios-home" click="goHome()"></ion-floating-item>-->
+  </ion-floating-menu>
+  <ion-content class="jobsearch-has-subheader  normal-header main-content ">
+    <ion-slide-box active-slide="activeSlide" on-slide-changed="slideChanged()">
+     <ion-slide ng-repeat="interview in interviews">
+       <ion-scroll>
+       <span class="item item-icon-left" style="font-weight:bold;">
+       <i class="icon {{interview.icon}}"></i>
+       {{interview.name}}
+     </span>
+       <div ng-if="(interview.type=='5006') || (interview.type=='5003') || (interview.type=='5001')">
+         <div ng-if="post.hiringtype != '6001'">
+             <div class="item" style="border-color: transparent;">
+               <span style="font-weight: bold; font-size:12px;" ng-if="interview.closing">{{interview.closing | date:'yyyy-MM-dd HH:mm' }} </span>
+               <span class="alignright" style="font-weight: bold; font-size:12px;" ng-if="interview.decisionby">{{interview.decisionby | date:'yyyy-MM-dd HH:mm'}}</span>
+             </div>
+         </div>
+       </div>
+       <div ng-if="(interview.type=='5006' || interview.type=='5003')"> <!-- Person, Call-->
+         <div ng-if="interview.type=='5006'">
+         <span class="item" style="font-weight:bold;">
+         Location:
+          </span>
+           <span class="item item-text-wrap">
+           {{interview.fulladdress}} {{interview.unit}}</span>
+           <span class="item">
+           {{interview.citytag}} {{interview.postal}}</span>
+         </div>
+         <div ng-if="(interview.result)">
+           <span class="item" style="font-weight:bold;">
+           Schedules:
+            </span>
+         <ion-list class="animate-ripple"
+                   show-reorder=false>
+           <ion-item ng-repeat="result in interview.result" style="border-color: transparent;">
+             <div class="list card" ng-if="result.applicant!=null" style="margin-bottom: 10px;">
+              <ion-checkbox ng-model="result.checked" style="border-color: transparent;" ng-disabled="interview.sequence!=post.interviewstage || result.passed=='Y' || result.passed=='N'">
+               </ion-checkbox>
+                <span ng-if="result.applicant!=null" class="item-text-wrap">{{result.starttime| date: "yyyy-MM-dd H:mm"}} - {{result.endtime| date: "yyyy-MM-dd H:mm"}} by {{result.applicant}}</span>
+                <span class="input-label">Score:
+               {{result.score}}</span>
+               <span class="input-label">Note:
+              {{result.note}}</span>
+              <span class="input-label">Message:
+             {{result.message}}</span>
+             <span class="input-label">Passed:
+            {{result.passed}}</span>
+             </div>
+           </ion-item>
+         </ion-list>
+         </div>
+       </div>
+       <div ng-if="(interview.type=='5001')"> <!-- APP -->
+         <ion-list class="animate-ripple"
+                   show-reorder=false>
+           <ion-item ng-repeat="result in interview.result" style="border-color: transparent;">
+             <div ng-if="result.no==1" >
+
+             <span class="item" style="font-weight:bold;">
+             {{result.applicant}}
+             <ion-checkbox ng-model="result.checked" style="border-color: transparent;" ng-disabled="interview.sequence!=post.interviewstage || result.passed=='Y' || result.passed=='N'">
+             </ion-checkbox>
+              </span>
+
+             <span class="input-label">Submitted on:
+            {{result.updated| date: "yyyy-MM-dd HH:mm"}}</span>
+            <span class="input-label">Score:
+           {{result.score}}</span>
+           <span class="input-label">Note:
+          {{result.note}}</span>
+          <span class="input-label">Message:
+         {{result.message}}</span>
+         <span class="input-label">Passed:
+        {{result.passed}}</span>
+      </div>
+             <div class="list card" style="margin-bottom: 10px;">
+
+               <label class="item item-input item-floating-label">
+                <span class="input-label">Q {{result.no}}: {{result.question}}</span>
+                 <input type="text" placeholder="Q {{result.no}}: {{result.question}}" ng-model="result.answer">
+               </label>
+             </div>
+           </ion-item>
+         </ion-list>
+       </div>
+       <div >
+       </div>
+     </ion-scroll>
+     </ion-slide>
+   </ion-slide-box>
+
+  </ion-content>
+
+
+</ion-view>

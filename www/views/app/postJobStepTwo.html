@@ -1,0 +1,149 @@
+<ion-view ng-init="init()" hide-nav-bar="true">
+
+    <div class="bar bar-header bar-positive" id="map_header">
+        <button class="button" ng-click="getPrevCache()">Cancel</button>
+        <h1 class="title"><span ng-click="goHome()">goRilla</span></h1>
+         <button class="button" ng-click="clearCache()">Reset</button>
+    </div>
+
+
+    <ion-content class="jobsearch-has-subheader normal-header btn-footer">
+        <div class="content-box">
+
+
+            <h5 class="sub-title">Posting a Job</h5>
+
+            <div>
+                <!--<img src={{posting.stepone}} style="width:35px;" /> -->
+                <div class="postjobStep">
+                    <div class="divTable" style="border: none;">
+                        <div class="divRow">
+                            <div class="divCell divcellx5">
+                                <div>
+                                    <div class="stepImg">
+                                        <img src="img/icon_circle_yellow.png" style="width:40px;" />
+                                        <div class="stepOne">
+                                            <font color="#ccc" style="">1</font>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="divCell divcellx5">
+                                <div>
+                                    <div class="stepImg">
+                                        <img src="img/icon_circle_orange.png" style="width:40px;" />
+                                        <div class="stepOne">
+                                            <font color="#ffffff" style="">2</font>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="divCell divcellx5">
+                                <div>
+                                    <div class="stepImg">
+                                        <img src="img/icon_circle_yellow.png" style="width:40px;" />
+                                        <div class="stepOne">
+                                            <font color="#ccc" style="">3</font>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="divCell divcellx5">
+                                <div>
+                                    <div class="stepImg">
+                                        <img src="img/icon_circle_yellow.png" style="width:40px;" />
+                                        <div class="stepOne">
+                                            <font color="#ccc" style="">4</font>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="divCell divcellx5">
+                                <div>
+                                    <div class="stepImg">
+                                        <img src="img/icon_circle_yellow.png" style="width:40px;" />
+                                        <div class="stepOne">
+                                            <font color="#ccc" style="">5</font>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <h5 class="sub-title sub">Title</h5>
+            <div class="input-box">
+                <label class="item item-input input-type1">
+      <span class="input-label">Title</span>
+      <input type="text" ng-model="posting.steptwo.title" select-on-click ng-change="postingChanged()">
+    </label>
+            </div>
+
+            <h5 class="sub-title sub">Languages</h5>
+            <div class="input-box">
+                <label class="item input-type1">
+        <ion-toggle ng-model="posting.steptwo.english" ng-change="postingChanged()" toggle-class="toggle-calm"><img src="img/flag_ca.png" width="40px" /></ion-toggle>
+        <ion-toggle ng-model="posting.steptwo.french" ng-change="postingChanged()" toggle-class="toggle-calm"><img src="img/flag_fr.png" width="40px"/></ion-toggle>
+        <ion-toggle ng-model="posting.steptwo.korean" ng-change="postingChanged()" toggle-class="toggle-calm"><img src="img/flag_kr.png" width="40px"/></ion-toggle>
+        <ion-toggle ng-model="posting.steptwo.chinese" ng-change="postingChanged()" toggle-class="toggle-calm"><img src="img/flag_cn.png" width="40px" /></ion-toggle>
+			</label>
+            </div>
+
+            <h5 class="sub-title sub">Ability</h5>
+            <div class="input-box">
+                <label class="item item-input input-type1">
+      <span class="input-label">Skills</span>
+      <!--<input type="text" ng-model="posting.steptwo.tags" ng-change="postingChanged()">-->
+      <input ion-autocomplete type="text" readonly="readonly" class="ion-autocomplete" autocomplete="off"
+                             ng-model="posting.steptwo.tags"
+                             item-value-key="name"
+                             item-view-value-key="view"
+                             items-method="getSkillTags(query)"
+                             items-method-value-key="items"
+                             placeholder="Enter Required skills..."
+                            external-model="externalModel" model-to-item-method="modelToItemMethod(modelValue)"
+                             ng-change="postingChanged()"/>
+    </label>
+                <div>
+
+                    <ion-toggle ng-model="posting.steptwo.experienced" ng-change="postingChanged()" toggle-class="toggle-calm"><span class="input-label">Experienced</span></ion-toggle>
+
+                </div>
+                <div>
+                    <label class="item item-input item-select input-type1">
+			  <span class="input-label">
+				Hiring Type
+        </span>
+			  <select ng-model="posting.steptwo.hiringtype" ng-change="postingChanged()" >
+           <option ng-repeat="option in posting.steptwo.hiringtypeoptions" value="{{option.id}}">{{option.name}}</option>
+				<!--<option value="6001">Always Hiring</option>
+				<option value="6002">Now Hiring</option>-->
+			  </select>
+			</label>
+                </div>
+
+                <div class="item item-icon-left input-type1" ion-datetime-picker only-valid="{'after': 'today', 'inclusive': true}" ng-model="posting.steptwo.applicationdeadline">
+
+                    <span class="input-label" style="display: inline-block;">Application Deadline<b style="color: #333;">
+          {{posting.steptwo.applicationdeadline| date: "yyyy-MM-dd H:mm"}}</b></span>
+                    <img src="../../img/icon-date.png" style="top: 17px; float: right" class="icon-date">
+
+                </div>
+            </div>
+
+            <!--<input ng-disabled="posting.steptwo.hiringtype=='6001'" type="date" ng-model="posting.steptwo.applicationdeadline" ng-change="postingChanged()">-->
+
+        </div>
+    </ion-content>
+
+    <ion-footer-bar class="footer-bar-custom">
+
+        <div class="stepbtn stepbtn-on" style="width: calc(50% - 5px); margin-right: 10px;"><a href="#/app/postJobStepOne" style="" ng-click="">Back</a></div>
+
+        <div class="stepbtn stepbtn-active" style="width: calc(50% - 5px);"><a style="" ng-click="saveStep('2')">Next</a></div>
+    </ion-footer-bar>
+
+
+</ion-view>

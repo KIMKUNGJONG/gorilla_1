@@ -1,0 +1,168 @@
+        <ion-modal-view>
+          <!--<ion-header-bar>
+              <h1 class="title">{{title}}</h1>
+              <button ng-click="pdc4.modalinterview.hide()" class="ion-android-close"></button>
+          </ion-header-bar>-->
+          <ion-header-bar class="login-bar-bcg">
+              <h1 class="title">{{title}}</h1>
+              <div class="buttons">
+              <button ng-if="isupdatable" ng-click="pdc4.acceptInterview()" class="button button-icon ion-ios-checkmark"></button>
+              <button ng-click="pdc4.dismissInterview()" class="button button-icon ion-ios-close"></button>
+            </div>
+          </ion-header-bar>
+        <ion-content >
+
+              <!--<div>
+              <label class="item item-input item-icon-right">
+                <span class="input-label">{{titile}}</span>
+              </label>
+            </div>-->
+
+          		<div ng-if="isnew">
+          			<div class="divTable" style="background-color: white;">
+          				<div class="divRow">
+          					<div class="divCell3">
+          						<div>
+          							<div class="stepImg">
+          								<img src="img/icon_job_postings_4.png" style="width:40px;" ng-click="pdc4.enableInputWindow('5001')"/>
+          							</div>
+          						</div>
+          					</div>
+          					<!--<div class="divCell3">
+          						<div>
+          							<div class="stepImg">
+          								<img src="img/icon_job_postings_2.png" style="width:40px;" ng-click="pdc4.enableInputWindow('5002')"/>
+          							</div>
+          						</div>
+          					</div>-->
+                    <div class="divCell3">
+                      <div>
+                        <div class="stepImg">
+                          <img src="img/icon_job_postings_1.png" style="width:40px;" ng-click="pdc4.enableInputWindow('5003')"/>
+                        </div>
+                      </div>
+                    </div>
+          					<div class="divCell3">
+          						<div>
+          							<div class="stepImg">
+          								<img src="img/icon_job_postings_3.png" style="width:40px;" ng-click="pdc4.enableInputWindow('5006')"/>
+          							</div>
+          						</div>
+          					</div>
+
+
+          					<!--<div class="divCell3">
+          						<div>
+          							<div class="stepImg">
+          								<img src="img/icon_job_postings_5.png" style="width:40px;" ng-click="pdc4.enableInputWindow('5004')"/>
+          							</div>
+          						</div>
+          					</div>
+          					<div class="divCell3">
+          						<div>
+          							<div class="stepImg">
+          								<img src="img/icon_job_postings_6.png" style="width:40px;" ng-click="pdc4.enableInputWindow('5005')"/>
+          							</div>
+          						</div>
+          					</div>-->
+          				</div>
+                  </div>
+          		</div>
+              <div ng-if="isperson || isphone || isapp">
+                <div ng-if="posting.steptwo.hiringtype != '6001'">
+                    <div class="item item-icon-left" ion-datetime-picker only-valid="{'after': 'today', 'inclusive': true}" ng-model="posting.stepfour.closing">
+                        <i class="icon ion-ios-calendar-outline positive"></i>
+                         <span class="input-label">Final Interview by:
+                        {{posting.stepfour.closing| date: "yyyy-MM-dd HH"}}</span>
+                    </div>
+                    <div>
+                			<label class="item item-input item-select">
+                			  <span class="input-label">
+                				Decision within:
+                        </span>
+                			  <select ng-model="posting.stepfour.decisionwithin" ng-change="postingChanged()" >
+                           <option ng-repeat="option in posting.stepfour.decisionwithinoptions" value={{option.value}}>{{option.description}}</option>
+                				<!--<option value="6001">Always Hiring</option>
+                				<option value="6002">Now Hiring</option>-->
+                			  </select>
+                			</label>
+                		</div>
+                </div>
+              </div>
+              <div ng-if="isperson">
+                <!--<div>
+            			<label class="item item-input">
+            			  <span class="input-label">Location:</span>
+            			  <input type="text" ng-model="posting.stepfour.address1" ng-change="pdc4.postingChanged()">
+            			</label>
+            		</div>
+                <div>
+            			<label class="item item-input item-icon-right">
+                    <span class="input-label">&nbsp;</span>
+            			  <input type="text" ng-model="posting.stepfour.address2" ng-change="pdc4.postingChanged()">
+                    <i class="icon ion-location" ng-click="pdc4.openMapLoc(posting.stepfour.address1, posting.stepfour.address2)"></i>
+            			</label>
+            		</div>-->
+
+                <div class="item item-input">
+          			  <span class="input-label">Location:</span>
+                  <form>
+                    <div class="form-group">
+                      <input vs-google-autocomplete
+                             ng-model="posting.stepfour.fulladdress"
+                             vs-street-number="autoaddress.streetNumber"
+                             vs-street="autoaddress.street"
+                             vs-city="autoaddress.city"
+                             vs-state="autoaddress.state"
+                             vs-country="autoaddress.country"
+                             vs-post-code="autoaddress.postal"
+                             vs-latitude="autoaddress.lat"
+                             vs-longitude="autoaddress.long"
+                             type="text"
+                             name="address"
+                             id="address"
+                             class="form-control"
+                             ng-focus="pdc4.disableTap($event)"
+                             placeholder="Enter address" select-on-click>
+                    </div>
+                  </form>
+
+          			</div>
+
+              <div>
+          			<div class="item item-input">
+                  <span class="input-label">Unit:</span>
+          			  <input type="text" ng-model="posting.stepfour.unit" placeholder="Enter applicable unit #" select-on-click/>
+          			</div>
+          		</div>
+
+              <div ng-if="autoaddress.city">
+          			<div class="item item-input item-icon-right">
+                  <span class="input-label">&nbsp;</span>
+          			  {{autoaddress.city}}, {{autoaddress.state}} {{autoaddress.postal}}
+                  <i class="icon ion-location" ng-click="pdc4.openMapLoc(autoaddress.lat, autoaddress.long)"></i>
+          			</div>
+          		</div>
+              <div ng-if="!autoaddress.city">
+          			<div class="item item-input item-icon-right">
+                  <span class="input-label">&nbsp;</span>
+          			  {{posting.stepfour.citytag}} {{posting.stepfour.postal}}
+                  <i class="icon ion-location" ng-click="pdc4.openMapLoc(posting.stepfour.latitude, posting.stepfour.longitude)"></i>
+          			</div>
+          		</div>
+
+              </div>
+              <div ng-if="isapp">
+                <div class="item item-input">
+                  <span class="input-label">App Interview:</span>
+                  <button class="icon-right ion-plus-round" ng-click="pdc4.addAppQuestion()"></button>
+                </div>
+                <div ng-repeat="question in posting.stepfour.questions | orderBy: question.no">
+                  <div class="item item-input">
+                    <input type="text" ng-model="question.question" ng-change="pdc4.postingChanged()">
+                  </div>
+                </div>
+              </div>
+        </ion-content>
+
+        </ion-modal-view>

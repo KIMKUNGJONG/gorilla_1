@@ -1,0 +1,27 @@
+{
+  "name": "angular-lz-string",
+  "version": "1.0.5",
+  "main": "angular-lz-string.js",
+  "keywords": [
+    "compression",
+    "lzw",
+    "string",
+    "angular"
+  ],
+  "ignore": [
+    "tests/",
+    "bower_components",
+    "node_modules"
+  ],
+  "homepage": "https://github.com/carlansley/angular-lz-string",
+  "_release": "1.0.5",
+  "_resolution": {
+    "type": "version",
+    "tag": "v1.0.5",
+    "commit": "cfd88808c3c87f7b90e826f0728f02e4b8bccb00"
+  },
+  "_source": "https://github.com/carlansley/angular-lz-string.git",
+  "_target": "^1.0.5",
+  "_originalSource": "angular-lz-string",
+  "_direct": true
+}

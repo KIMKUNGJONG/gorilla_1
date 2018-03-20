@@ -1,0 +1,22 @@
+<ion-view view-title="Facebook Profile" class="">
+  <ion-content class="me">
+
+    <ion-list>
+
+		<ion-item class="item item-icon-left">
+			<i class="icon ion-email"></i>
+			{{me.email}}
+		</ion-item>
+
+		<!-- <ion-item class="item item-icon-left">
+			<i class="icon ion-egg"></i>
+			{{me.birthday}}
+		</ion-item> -->
+
+		<ion-item class="item item-icon-left" ng-click="fbLogout()">
+			<i class="icon ion-android-exit"></i>
+			Logout
+		</ion-item>
+	</ion-list>
+  </ion-content>
+</ion-view>

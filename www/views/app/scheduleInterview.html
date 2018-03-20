@@ -1,0 +1,71 @@
+<ion-view  hide-nav-bar="true" ng-init="init()">
+
+        <!-- header -->
+    <div class="bar bar-header bar-positive" id="map_header">
+        <button class="button" ng-click="goBack()">Back</button>
+        <h1 class="title"><span ng-click="goHome()">goRilla</span></h1>
+        <button class="button-icon" style="right: 45px;" ng-disabled="isToday()" ng-click="getInterviewQuestion()"><img src="../../img/icon-refresh.png" style="width: 18px; height: 18px;"></button>        <button class="button-icon" ng-click="gotoMessage()"><img src="../../img/icon_alarm.png">
+    </div>    
+    
+<!--
+  <ion-header-bar class="bar search-bar-bcg">
+    <div class="item-input">
+      <input type="text" readonly="readonly" class="ion-autocomplete"
+                             placeholder="Schedule Interview" />
+      <i class="icon-small icon ion-gorilla-empty" ></i>
+      <i class="icon-small icon ion-gorilla-empty" ></i>
+      <i class="icon-small icon ion-gorilla-empty" ></i>
+      <span>{{post.title}} - {{applicant.name}}</span>
+      <i class="icon-small icon ion-gorilla-empty"></i>
+    </div>
+  </ion-header-bar>
+-->
+<!--
+  <ion-floating-menu menu-open-icon="ion-arrow-shrink" menu-icon="ion-ios-more" menu-open-color="#2AC9AA" menu-color="#f79429">
+    <ion-floating-item icon="ion-paper-airplane" click="notifyApplicant()" text="Send"></ion-floating-item>
+  </ion-floating-menu>
+-->
+  <ion-content class="jobsearch-has-subheader normal-header main-content scheduleApp">
+
+       <h5 class="sub-title sub" style="margin-top: 10px; padding: 0 20px;">{{post.title}} - {{applicant.name}}</h5>  
+  
+          <div class="item item-icon-left" ion-datetime-picker only-valid="{'after': 'today', 'inclusive': true}" ng-model="timeslot.closing">
+              <i class="icon ion-ios-calendar-outline positive"></i>
+              <span class="input-label"><b>Deadline</b><span style="margin-left: 10px; color: #666;">{{timeslot.closing| date: "yyyy-MM-dd HH"}}</span></span>
+          </div>
+          <div class="item item-icon-left">
+              <i class="icon {{interview.icon}}"></i>
+        		  <span class="input-label" style="font-weight: bold;">{{interview.name}}</span>
+        	</div>
+
+          <div class="item item-input item-icon-right" >
+            <span class="input-label" >&nbsp;Timeslot length</span>
+            <select ng-model="option.length">
+               <option ng-repeat="option1 in option.lengthoptions" ng-selected="option1.value==option.length" value={{option1.value}}>{{option1.description}}</option>
+            </select>
+            <i class="icon ion-clock" ng-click="addNewSchedule()"></i>
+            </div>
+
+    <ion-list class="animate-ripple"
+              can-swipe=true
+              show-reorder=false>
+      <ion-item ng-repeat="schedule in schedules">
+            <ion-checkbox ng-model="schedule.checked" style="border-color: transparent;" ng-disabled="schedule.applicant!=null">
+              <span ng-if="schedule.applicant==null" style="font-weight: bold;" class="item-text-wrap">{{schedule.starttime| date: "yyyy-MM-dd H:mm"}} - {{schedule.endtime| date: "yyyy-MM-dd H:mm"}}</span>
+              <span ng-if="schedule.applicant!=null" style="font-weight: bold;" class="item-text-wrap">{{schedule.starttime| date: "yyyy-MM-dd H:mm"}} - {{schedule.endtime| date: "yyyy-MM-dd H:mm"}} by {{schedule.applicant}}</span>
+            </ion-checkbox>
+            <ion-option-button class="button-assertive" ng-if="schedule.applicant==null"
+                               ng-click="deleteTimeSlot(schedule, $index)">
+              Delete
+            </ion-option-button>
+
+      </ion-item>
+    </ion-list>
+
+  </ion-content>
+   <ion-footer-bar class="footer-bar-custom">
+
+        <div class="stepbtn stepbtn-on" style="width: 100%;"><a href="#" style="" ng-click="">Submit</a></div>
+    </ion-footer-bar>  
+
+  </ion-view>

@@ -1,0 +1,22 @@
+        <ion-modal-view>
+        <ion-header-bar class="login-bar-bcg">
+          <div class="buttons">
+            <h1 class="title">{{title}}</h1>
+            <button ng-click="pdc3.acceptPdf()" class="button button-icon ion-checkmark-round"></button>
+            <button ng-click="pdc3.dismissPdf()" class="button button-icon ion-android-close"></button>
+          </div>
+        </ion-header-bar>
+        <ion-content >
+          <div class="item item-icon-left" >
+            <i class="icon ion-filing"></i>
+            <!--<i class="icon ion-archive" ng-click="uploadResume()" ></i>-->
+            <input type="file" ngf-select ngf-change="selectPdf($files)" />
+        </div>
+
+          <div ng-if="ispdf">
+            <ng-pdf ng-if="pdfUrl" template-url="views/app/pdfviewer.html" canvasid="pdf"  scale="page-fit"></ng-pdf>
+          </div >
+
+        </ion-content>
+
+        </ion-modal-view>

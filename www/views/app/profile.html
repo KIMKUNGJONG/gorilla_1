@@ -1,0 +1,72 @@
+<ion-view style="background: #f0f0f0;" hide-nav-bar="true"  >
+
+<div class = "bar bar-header bar-positive" id="map_header">
+<button class="button" ng-click="$ionicGoBack()">Cancel</button>
+<h1 class = "title"><span ng-click="goHome()">goRilla</span></h1>
+<button class="button" ng-click="saveProfile()" >Done</button>
+</div>
+    
+  <ion-content>
+      <!--<div style="width:100%;height:90px;margin-top:20px;">
+        <div class="item-profile" ng-click="openImagePicker()">
+          <div class="item item-avatar-right" ng-if="me.picture">
+            <img data-ng-src="data:image/png;base64,{{me.picture}}"/>
+          </div>
+          <div class="item item-avatar-right" ng-if="!me.picture">
+            <img data-ng-src="img/camera.png" />
+          </div>
+        </div>
+      </div>-->
+      <div class="gorilla-profile" ng-if="me.picture" ng-click="openImagePicker()">
+          <img id="profile-image" data-ng-src="{{me.picture}}" />
+      </div>
+      <div class="gorilla-profile" ng-if="!me.picture" ng-click="openImagePicker()">
+          <img id="profile-image" data-ng-src="img/camera.png" />
+          <span class="profile-photo">Change Profile Photo</span>
+      </div>
+
+
+      <div class="list" style="padding-top: 20px;">
+        <!--<label class="item item-input item-floating-label">
+          <span class="input-label">Name</span>
+          <input type="text" ng-model="me.name" placeholder="Name">
+        </label>
+        <label class="item item-input item-floating-label">
+          <span class="input-label">Phone</span>
+          <input type="text" ng-model="me.phone" placeholder="Phone">
+        </label>
+        <label class="item item-input item-floating-label">
+          <span class="input-label">Email</span>
+          <input type="text" ng-model="me.email" placeholder="Email">
+          <button class="button button-positive">
+            <i class="icon ion-edit"></i>
+          </button>
+        </label>-->
+        <p class="profile-title"><i class="icon ion-person"></i> Edit Profile</p>
+        <div class="item item-icon-left item-icon-right profile-input" ng-click="updateProfile('name')">
+          <span style="color: #222;"><b style="color: #666;">Name</b></span>
+          {{me.name}}
+          <i class="icon ion-edit"></i>
+        </div>
+        <div class="item item-icon-left item-icon-right profile-input">
+            <span style="color: #222;"><b style="color: #666;">Phone</b></span>
+          {{me.phone}}
+          <i class="icon ion-edit"  ng-click="updateProfile('phone')"></i>
+        </div>
+          <div class="item item-icon-left item-icon-right profile-input">
+              <span style="color: #222;"><b style="color: #666;">E-Mail</b></span>
+            {{me.email}}
+            <i class="icon ion-edit" ng-click="updateProfile('email')"></i>
+          </div>
+          <!--<div class="item item-icon-left item-icon-right" >
+            <i class="icon ion-android-upload"></i>
+          My Resumes
+            <i class="icon ion-compose" ui-sref="app.manageResume"></i>
+        </div>-->
+      </div>
+
+  </ion-content>
+  <!--<ion-footer-bar class="footer-bar-custom">
+    <div style="width: 100%; float:left;padding-top: 5px;background-color:#777777;" ng-click="saveProfile()" >Save</div>
+  </ion-footer-bar>-->
+</ion-view>

@@ -1,0 +1,7 @@
+{
+    "jscodehints.detectedExclusions": [
+        "E:/PartJobProject/www/js/controllers.js",
+        "E:/PartJobProject/www/lib/ionic-contrib-tinder-cards/ionic.tdcards.js",
+        "E:/PartJobProject/www/lib/ionic-material/dist/ionic.material.js"
+    ]
+}

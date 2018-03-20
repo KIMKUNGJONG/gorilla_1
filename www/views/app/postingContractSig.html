@@ -1,0 +1,109 @@
+<ion-view ng-init="init()" hide-nav-bar="true">
+  <ion-header-bar class="login-bar-bcg">
+
+  </ion-header-bar>
+  <ion-floating-menu menu-open-icon="ion-arrow-shrink" menu-icon="ion-ios-more" menu-open-color="#2AC9AA" menu-color="#f79429">
+    <!--<ion-floating-item icon="ion-trash-a" ng-click="clearCanvas()" text="Clear Signature"></ion-floating-item>-->
+    <ion-floating-item ng-if="isposter" icon="ion-ios-paperplane" ng-click="submitSignaturePoster()" text="Submit"></ion-floating-item>
+    <ion-floating-item ng-if="isapplicant" icon="ion-ios-paperplane" ng-click="submitSignatureApplicant()" text="Submit"></ion-floating-item>
+    <ion-floating-item icon="ion-ios-undo" click="goBack()"></ion-floating-item>
+    <!--<ion-floating-item icon="ion-ios-home" click="goHome()"></ion-floating-item>-->
+  </ion-floating-menu>
+
+  <ion-content>
+    <div >
+			<label class="item">
+			  <span class="item-text-wrap" style="font-weight:bold;">{{post.title}}</span>
+			</label>
+		</div>
+    <div class="item">
+      <span style="font-weight: bold; font-size:12px;" ng-if="post.postingdate">{{post.postingdate | date:'yyyy-MM-dd HH:mm' }} </span>
+      <span class="alignright" style="font-weight: bold; font-size:12px;" ng-if="post.applicationdeadline">{{post.applicationdeadline | date:'yyyy-MM-dd HH:mm'}}</span>
+    </div>
+
+		<div>
+      <div>
+  			<div class="item item-input item-icon-right">
+  			  <span class="input-label" style="font-weight:bold;">Company:</span>
+  			  <span class="input-label" style="font-size:12px;">{{post.name}}</span>
+          <i class="icon ion-images" ng-if="countWorkPhotos>0"></i>
+  			</div>
+
+  		</div>
+      <div>
+  			<div class="item item-input item-icon-right">
+  			  <span class="input-label" style="font-weight:bold;">Location:</span>
+  			  <span class="item-text-wrap" style="font-size:12px;">{{post.fulladdress}} {{post.unit}}</span>
+
+  			</div>
+  		</div>
+
+      <div>
+      <label class="item">
+        <span class="input-label" style="font-weight:bold;">Skills:</span>
+
+        <button class="button button-small button-outline button-assertive" ng-repeat="skill in tag" ng-if="skill.type!='4004'">{{skill.name}}</button>
+
+      </label>
+      </div>
+      <div>
+        <label class="item item-input">
+  			  <span class="input-label" style="font-weight:bold;">Languages:</span>
+          <img ng-if="language.english" src="img/flag_ca.png" />
+          <img ng-if="language.french" src="img/flag_fr.png" />
+          <img ng-if="language.korean" src="img/flag_kr.png" />
+          <img ng-if="language.chinese" src="img/flag_cn.png" />
+        </label>
+  		</div>
+		</div>
+    <div class="item item-divider">
+      Additional Info
+    </div>
+
+    <div ng-if="post.filetype=='3003'"  >
+      <ion-scroll overflow-scroll="false" zooming="false" direction="xy" >
+      <ng-pdf ng-if="pdfUrl" template-url="views/app/pdfviewer5.html" canvasid="pdf5"  scale="page-fit"></ng-pdf>
+    </ion-scroll>
+    </div>
+    <div ng-if="post.filetype=='3001'" class="img-wrapper">
+      <!--<ion-scroll max-zoom="5" overflow-scroll="false" zooming="true" direction="xy" class="has-header">-->
+        <img height="300px"  class="img-inthemiddle" data-ng-src="{{post.content}}" style="float:center;" />
+      <!--</ion-scroll>-->
+
+    </div>
+    <div ng-if="post.filetype=='3004'" class="message" ng-bind-html="post.content | nl2br">
+
+    </div>
+
+    <div class="item item-divider">
+      Interview process
+    </div>
+    <div >
+    <i ng-repeat="interview in interviews |  orderBy: sequence">
+            <i style="width:30px;" class="icon {{interview.icon}}"></i>
+            &nbsp;{{interview.name}}&nbsp;&nbsp;
+    </i>
+  </div>
+  <div class="item item-divider">
+    Signature
+  </div>
+  <div ng-if="isposter" >
+    <tnf-signature-pad ng-model="data.postersignature"></tnf-signature-pad>
+    <br><br>
+  </div>
+<div ng-if="isapplicant" >
+  <tnf-signature-pad ng-model="data.applicantsignature"></tnf-signature-pad>
+  <br><br>
+</div>
+  </ion-content>
+
+  <ion-footer-bar class="login-bar-bcg">
+    <div class="buttons">
+    <button class="button icon ion-home" ng-click="goHome()"></button>
+    <button class="button icon ion-android-mail" ng-click="gotoMessage()"></button>
+    <!--<button class="button icon ion-settings" ng-click="goSetting()"></button>-->
+    <button class="button icon ion-gorilla-empty"></button>
+    </div>
+  </ion-footer-bar>
+
+</ion-view>

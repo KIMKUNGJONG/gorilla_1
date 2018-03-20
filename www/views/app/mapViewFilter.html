@@ -1,0 +1,73 @@
+<ion-view>
+    <ion-nav-title>
+        <span style="color:white;">Map View Filter</span>
+    </ion-nav-title>   
+    <ion-content>
+        <div style="height:5px;"></div>
+        <div style="height:30px;padding-left:10px;padding-top:5px;background-color:#f79429;">
+            <span style="color:white;">Work Area</span>
+        </div>
+        <div style="height:15px;"></div>
+        <div style="height:50px;text-align:center;">
+            <div style="height:35px;margin-left:auto;margin-right:auto;width:300px;">
+                <div style="float: left;width: 250px;margin-top: 7px;text-align: center;">
+                    <select style="width: 225px;">
+                      <option>City or Postal Code</option>
+                      <option selected>City or Postal Code</option>
+                      <option>City or Postal Code</option>
+                    </select>
+                </div>
+                <div style="float:right;width:50px;"><img src="img/icon_currentPosition.png"></div>
+            </div>
+         </div>
+         <!------------------------------->
+         <div style="height:30px;padding-left:10px;padding-top:5px;background-color:#f79429;">
+            <span style="color:white;">Skill / Keyword</span>
+         </div>
+         <div style="height:15px;"></div>
+         <div style="text-align:center;">
+            <div style="height:35px;margin-left:auto;margin-right:auto;width:300px;">
+                <div style="float: left;width: 220px;margin-top: 7px;text-align: center;">
+                    <select style="width: 180px;">
+                      <option>City or Postal Code</option>
+                      <option selected>City or Postal Code</option>
+                      <option>City or Postal Code</option>
+                    </select>
+                </div>
+                <div style="float:right;width:80px;margin-top: 7px;">
+                    <div style="width: 60px;margin-left: 5px;border: 1px;border-style: solid;height: 23px;border-radius: 5px;border-color: #f79429;">설정</div>
+                </div>
+            </div>
+         </div>
+         <div style="height:15px;"></div>
+         <!------------------------------->
+         <div style="height:30px;padding-left:10px;padding-top:5px;background-color:#f79429;">
+            <span style="color:white;">Filtering Option</span>
+         </div>
+         <div style="height:15px;"></div>
+         <div style="text-align:center;">
+            <span>Show postings only written in selected Languages</span>
+         </div>
+         <div style="height:10px;"></div>
+         <div style="height:30px;margin-left:10px;margin-right:10px;">
+            <div style="float:left;width:48%;text-align:center;border: 1px;border-style: solid;height: 30px;border-radius: 5px;border-color: #f79429;padding-top:3px;">영어</div>
+            <div style="float:right;width:48%;text-align:center;border: 1px;border-style: solid;height: 30px;border-radius: 5px;border-color: gray;padding-top:3px;">일어</div> 
+         </div>
+         <div style="height:5px;"></div>
+         <div style="height:30px;margin-left:10px;margin-right:10px;">
+            <div style="float:left;width:48%;text-align:center;border: 1px;border-style: solid;height: 30px;border-radius: 5px;border-color: #f79429;padding-top:3px;">한국어</div>
+            <div style="float:right;width:48%;text-align:center;border: 1px;border-style: solid;height: 30px;border-radius: 5px;border-color: gray;padding-top:3px;">중국어</div> 
+         </div>
+         <div style="height:10px;"></div>
+         <div>
+            <ion-list>
+                <ion-checkbox ng-model="filter.red">Do not show the linked postings</ion-checkbox>
+                <ion-checkbox ng-model="filter.yellow">Experienced</ion-checkbox>
+                <ion-checkbox ng-model="filter.pink">수시모집</ion-checkbox>
+            </ion-list>
+         </div>
+    </ion-content>
+    <ion-footer-bar class="footer-bar-custom">
+        <div style="width: 100%; float:left;padding-top: 5px;"><a style="color: #ffffff;margin-top: -5px;text-decoration: none;" href="#/app/postJobSearch">Apply Filter</a></div>  
+    </ion-footer-bar>
+</ion-view>

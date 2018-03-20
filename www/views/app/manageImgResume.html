@@ -1,0 +1,40 @@
+<ion-view hide-nav-bar="true" ng-init="init()">
+    
+
+    <div class="bar bar-header bar-positive" id="map_header">
+        <button class="button" ng-click="clearResume()">Cancel</button>
+        <h1 class="title"><span ng-click="goHome()">goRilla</span></h1>
+         <button class="button" ng-click="uploadResume()">Uproad</button>
+    </div>
+    
+
+  <!--<ion-nav-title>
+    <span style="color:white;">Image Resume Management</span>
+  </ion-nav-title>
+  <ion-nav-buttons side="right">
+    <a class="icon-right ion-gorilla-save" ng-click="uploadResume()" style="color:white; font-size: 25px; margin-top: 5px; margin-right: 10px;"></a>
+  </ion-nav-buttons>-->
+
+<ion-content class="jobsearch-has-subheader normal-header">
+
+<!--<div class="item item-icon-left" >
+  <i class="icon ion-cloud"></i>
+  TimHorton 20170101
+</div>-->
+    <!--<div class="bar bar-header bar-positive">
+        <button ng-click="$ionicGoBack()" class="button button-clear button-light icon-left ion-chevron-left">Go Back</button>
+    </div>-->
+<!--<ion-scroll max-zoom="5" overflow-scroll="false" style="width: 90%; height: 80%" zooming="true" direction="xy" class="has-header">
+        <img data-ng-src="{{file.resume}}" style="float:center;" />
+</ion-scroll>-->
+<div style="float:center;" >
+  <ion-scroll max-zoom="5" overflow-scroll="false" zooming="true" direction="xy" >
+    <img data-ng-src="{{file.resume}}" style='height: 100%; width: 100%; object-fit: contain' />
+  </ion-scroll>
+</div>
+</ion-content>
+
+<!--<ion-footer-bar class="footer-bar-custom" ng-if="file.imgverified">
+  <div style="width: 100%; float:left;padding-top: 5px;" ng-click="uploadResume()" >Uploading</div>
+</ion-footer-bar>-->
+</ion-view>

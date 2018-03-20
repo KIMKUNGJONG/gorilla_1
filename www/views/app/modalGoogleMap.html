@@ -1,0 +1,30 @@
+<ion-view hide-nav-bar="true">
+
+  <ion-header-bar class="bar search-bar-bcg">
+    <div class="item-input">
+      <input type="text" readonly="readonly" class="ion-autocomplete"
+                             placeholder="Select Location" />
+      <i class="icon-small icon ion-gorilla-empty" ></i>
+      <i class="icon-small icon ion-gorilla-empty" ></i>
+      <i class="icon-small icon ion-gorilla-empty" ></i>
+      <i class="icon-small icon ion-navigate" ng-click="centerOnMe()"></i>
+    </div>
+  </ion-header-bar>
+
+  <ion-floating-menu menu-open-icon="ion-arrow-shrink" menu-icon="ion-ios-more" menu-open-color="#2AC9AA" menu-color="#f79429">
+    <ion-floating-item icon="ion-ios-undo" click="goBack()"></ion-floating-item>
+    <!--<ion-floating-item icon="ion-ios-home" click="goHome()"></ion-floating-item>-->
+  </ion-floating-menu>
+  <ion-content class="jobsearch-has-subheader">
+
+<ion-content>
+		<div id="map" data-tap-disabled="true"></div>
+	</ion-content>
+  <ion-footer-bar class="login-bar-bcg">
+    <!--<div class="buttons">
+    <button class="button icon ion-home" ng-click="goHome()"></button>
+    <button class="button icon ion-gear-a" ></button>
+    <button class="button icon ion-settings" ng-click="goSetting()"></button>
+  </div>-->
+  </ion-footer-bar>
+</ion-view>

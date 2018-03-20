@@ -1,0 +1,32 @@
+<ion-view hide-nav-bar="true">
+   <div class="bar bar-header bar-positive" id="map_header">
+        <button class="button" ng-click="$ionicGoBack()">Back</button>
+        <h1 class="title"><span ng-click="goHome()">goRilla</span></h1>
+        <button class="button-icon" ng-click="gotoMessage()"><img src="../../img/icon_alarm.png"></button>
+    </div>
+    <div class="bar bar-header bar-positive sub-header">
+        <div class="sub-input"> <span><img src="../../img/icon-search.png" /></span>
+            <input ion-autocomplete type="text" readonly="readonly" class="sub-search" autocomplete="off" ng-model="filter.searchValue" item-value-key="name" item-view-value-key="view" items-method="getSkillTags(query)" items-method-value-key="items" cancel-button-clicked-method="cancelButtonClickedMethod(callback)" placeholder="Searching skill..." external-model="externalModel" model-to-item-method="modelToItemMethod(modelValue)" ng-change="postingChanged()" /> <span ng-click="clearSearch()" class="right" style="top: 7px;"><img src="../../img/icon-cancel.png" /></span></div> <span style="position: absolute; right: 45px;" class="icon_filter" ng-click="gotoFilter()"></span>
+        <div style="position: absolute; right: 20px;" ng-if=true class="icon_eye" ng-click="viewSelect($event)"></div>
+    </div>    
+<!--
+    <div style="height:44px;background-color: #F79429;">
+        <table style="width:100%;">
+            <tr>
+                <td style="width:30px;"><img src="img/backArrow.png" style="margin-left:5px;" ng-click="gotoBack()"></td>
+                <td>
+                    <div style="margin-top: 5px;">
+                        <input type="text" style="width:100%;border-radius: 5px;padding-left: 5px;">
+                    </div>
+                </td>
+                <td style="width:10px;"><div><img src="img/search_bt.png" style="margin-left:-35px;"></div></td>
+                <td style="width:30px;"><div><img src="img/filter.png" style="margin-left:5px;" ng-click="gotoFilter()"></div></td>
+                <td style="width:30px;"><div><img src="img/eye.png" style="margin-right:5px;" ng-click="viewSelect($event)"></div></td>
+            </tr>
+        </table>
+    </div>
+-->
+    <ion-content style="margin-top:100px;">
+        
+    </ion-content>
+</ion-view>

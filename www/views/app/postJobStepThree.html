@@ -1,0 +1,116 @@
+<ion-view ng-init="pdc3.init()" hide-nav-bar="true">
+
+    <div class="bar bar-header bar-positive" id="map_header">
+        <button class="button" ng-click="pdc3.getPrevCache()">Back</button>
+        <h1 class="title"><span ng-click="goHome()">goRilla</span></h1>
+        <button class="button" ng-click="clearCache()">Reset</button>
+    </div>
+
+    <ion-content class="jobsearch-has-subheader normal-header btn-footer">
+        <div class="content-box">
+
+
+            <h5 class="sub-title">Posting a Job</h5>
+
+            <div>
+                <!--<img src={{posting.stepone}} style="width:35px;" /> -->
+                <div class="postjobStep">
+                    <div class="divTable" style="border: none;">
+                        <div class="divRow">
+                            <div class="divCell divcellx5">
+                                <div>
+                                    <div class="stepImg">
+                                        <img src="img/icon_circle_yellow.png" style="width:40px;" />
+                                        <div class="stepOne">
+                                            <font color="#ccc" style="">1</font>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="divCell divcellx5">
+                                <div>
+                                    <div class="stepImg">
+                                        <img src="img/icon_circle_yellow.png" style="width:40px;" />
+                                        <div class="stepOne">
+                                            <font color="#ccc" style="">2</font>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="divCell divcellx5">
+                                <div>
+                                    <div class="stepImg">
+                                        <img src="img/icon_circle_orange.png" style="width:40px;" />
+                                        <div class="stepOne">
+                                            <font color="#fff" style="">3</font>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="divCell divcellx5">
+                                <div>
+                                    <div class="stepImg">
+                                        <img src="img/icon_circle_yellow.png" style="width:40px;" />
+                                        <div class="stepOne">
+                                            <font color="#ccc" style="">4</font>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="divCell divcellx5">
+                                <div>
+                                    <div class="stepImg">
+                                        <img src="img/icon_circle_yellow.png" style="width:40px;" />
+                                        <div class="stepOne">
+                                            <font color="#ccc" style="">5</font>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+
+
+            <label class="item item-input item-icon-right input-type1">
+      <span class="input-label">Adding more info about this job</span>
+      <button class="icon-right ion-plus-round" ng-click="pdc3.gatheringAdd()" style="padding: 0; "></button>
+    </label>
+        </div>
+
+        <div ng-if="ispdf1">
+            <ng-pdf ng-if="pdfUrl1" template-url="views/app/pdfviewer3.html" canvasid="pdf" scale="page-fit"></ng-pdf>
+        </div>
+        <div ng-if="isimg1">
+            <ion-scroll max-zoom="5" overflow-scroll="false" style="width: 90%; height: 80%" zooming="true" direction="xy" class="has-header">
+                <img data-ng-src="{{posting.stepthree.content}}" style="float:center;" />
+            </ion-scroll>
+        </div>
+        <div ng-if="istxt1">
+
+            <label class="item item-input">
+          <textarea ng-model="posting.stepthree.content" rows="15" select-on-click style="border-style: inset;border-width: 1px; margin-left: -7px;" disabled="true"></textarea>
+        </label>
+
+        </div>
+
+        <!--<div class="card" ng-if="posting.stepthree.filetype=='3004'" >
+      <div class="item item-text-wrap">
+       {{posting.stepthree.content}}
+      </div>
+    </div>-->
+
+        </div>
+    </ion-content>
+
+    <ion-footer-bar class="footer-bar-custom">
+
+        <div class="stepbtn stepbtn-on" style="width: calc(50% - 5px); margin-right: 10px;"><a href="#/app/postJobStepTwo" style="" ng-click="">Back</a></div>
+
+        <div class="stepbtn stepbtn-active" style="width: calc(50% - 5px);"><a style="" ng-click="pdc3.saveStep('3')">Next</a></div>
+    </ion-footer-bar>
+
+
+</ion-view>

@@ -1,0 +1,81 @@
+<ion-view ng-init="init()" hide-nav-bar="true">
+    
+     <div class="bar bar-header bar-positive" id="map_header">
+        <button class="button" ng-click="goBack()">Back</button>
+        <h1 class="title"><span ng-click="goHome()">goRilla</span></h1>
+        <button class="button-icon" style="right: 45px;" ng-disabled="isToday()" ng-click="getInterviewQuestion()"><img src="../../img/icon-refresh.png" style="width: 18px; height: 18px;"></button>        <button class="button-icon" ng-click="gotoMessage()"><img src="../../img/icon_alarm.png"></button>
+        
+    </div>    
+
+  <ion-content class="jobsearch-has-subheader normal-header">
+      <div class="content-box">
+
+
+            <h5 class="sub-title">Interview Detail</h5>
+
+    <ion-slide-box active-slide="activeSlide" on-slide-changed="slideChanged()">
+     <ion-slide ng-repeat="interview in interviews">
+       <ion-scroll>
+       <span class="item item-icon-left" style="font-weight:bold;">
+       <i class="icon {{interview.icon}}"></i>
+       {{interview.name}}
+     </span>
+       <div ng-if="(interview.type=='5006') || (interview.type=='5003') || (interview.type=='5001')">
+         <div ng-if="post.hiringtype != '6001'">
+             <div class="item" style="border-color: transparent;">
+               <span style="font-weight: bold; font-size:12px;" ng-if="interview.closing">{{interview.closing | date:'yyyy-MM-dd HH:mm' }} </span>
+               <span class="alignright" style="font-weight: bold; font-size:12px;" ng-if="interview.decisionby">{{interview.decisionby | date:'yyyy-MM-dd HH:mm'}}</span>
+             </div>
+         </div>
+       </div>
+       <div ng-if="(interview.type=='5006') "> <!-- Person -->
+         <span class="item" style="font-weight:bold;">
+         Location:
+          </span>
+           <span class="item item-text-wrap">
+           {{interview.fulladdress}} {{interview.unit}}</span>
+           <span class="item">
+           {{interview.citytag}} {{interview.postal}}</span>
+
+         <div ng-if="(interview.timeslot)">
+           <span class="item" style="font-weight:bold;">
+           Appointment:
+            </span>
+         <span class="item">  {{interview.timeslot[0].starttime| date: 'yyyy-MM-dd H:mm'}} - {{interview.timeslot[0].endtime| date: 'yyyy-MM-dd H:mm'}}
+         </span>
+         </div>
+       </div>
+       <div ng-if="(interview.type=='5003') "> <!-- Call -->
+
+         <div ng-if="(interview.timeslot)">
+           <span class="item" style="font-weight:bold;">
+           Appointment:
+            </span>
+         <span class="item">  {{interview.timeslot[0].starttime| date: 'yyyy-MM-dd H:mm'}} - {{interview.timeslot[0].endtime| date: 'yyyy-MM-dd H:mm'}}
+         </span>
+         </div>
+       </div>
+       <div ng-if="(interview.type=='5001')"> <!-- APP -->
+         <ion-list class="animate-ripple"
+                   show-reorder=false>
+           <ion-item ng-repeat="answer in interview.answers" style="border-color: transparent;">
+             <span ng-if="answer.no==1" class="input-label">Submitted on:
+            {{answer.updated| date: "yyyy-MM-dd HH:mm"}}</span>
+             <div class="list card" style="margin-bottom: 10px;">
+
+               <label class="item item-input item-floating-label">
+                <span class="input-label">Q {{answer.no}}: {{answer.question}}</span>
+                 <input type="text" placeholder="Q {{answer.no}}: {{answer.question}}" ng-model="answer.answer">
+               </label>
+             </div>
+           </ion-item>
+         </ion-list>
+       </div>
+     </ion-scroll>
+     </ion-slide>
+   </ion-slide-box>
+      </div>
+  </ion-content>
+
+
+</ion-view>

@@ -1,0 +1,82 @@
+<ion-view ng-init="init()" hide-nav-bar="true">
+
+    <div class="bar bar-header bar-positive" id="map_header">
+        <button class="button" ng-click="$ionicGoBack()">Back</button>
+        <h1 class="title"><span ng-click="goHome()">goRilla</span></h1>
+        <button class="button-icon" ng-click="addPost()" style="right: 40px;"><img src="../../img/icon-plus.png" style="width: 18px; height: 18px;"></button>
+        <button class="button-icon" ng-click="refreshData()"><img src="../../img/icon-refresh.png" style="width: 18px; height: 18px;"></button>
+    </div>    
+    
+
+  <ion-content class="jobsearch-has-subheader normal-header">
+    <!--<ion-refresher
+        pulling-text="Refreshing..."
+        on-refresh="refreshData()">
+    </ion-refresher>-->
+    <ion-list class="animate-ripple"
+              can-swipe=true
+              show-reorder=false>
+      <ion-item ng-repeat="post in postings"
+                class="item-text-wrap animated bounceInUp postlist">
+                <div>
+                  <label style="">{{post.title}}</label>
+                    
+                <div class="post-status" style="" ng-if="post.status=='8001'">
+                    <img src="img/post_status_temp.png" width="12" style="" ng-click="openPost(post)"/>
+                </div>
+                <div class="post-status" style="" ng-if="post.status=='8002'">
+                    <img src="img/post_status_opened.png" width="12" style="" ng-click="openPost(post)"/>
+                </div>
+                <div class="post-status" style="" ng-if="post.status=='8003'">
+                    <img src="img/post_status_closed.png" width="12" style="" ng-click="openPost(post)"/>
+                </div>
+                <div class="post-status" style="" ng-if="post.status=='8004'">
+                    <img src="img/post_status_completed.png" width="12" style="" ng-click="openPost(post)"/>
+                </div>
+                <div class="post-status" style="" ng-if="post.status=='8005'">
+                    <img src="img/post_status_always.png" width="12" style="" ng-click="openPost(post)"/>
+                </div>                         
+                </div>     
+          
+                <div>
+                  <span class="jobDate" ng-if="post.postingdate">{{post.postingdate | date:'yyyy-MM-dd HH:mm' }} </span>
+                  <span class="jobDate" ng-if="!post.postingdate"></span>
+                  <span class="jobDate" style="" ng-if="post.applicationdeadline">~ {{post.applicationdeadline | date:'yyyy-MM-dd HH:mm'}}</span>
+                    <span class="jobDate" style="" ng-if="!post.applicationdeadline">&nbsp;</span>
+                </div>
+
+
+            			<div class="profilImg" ng-if="post.cvrequired=='Y'">
+                      <img src="../../img/resume.png" />
+                    <span style="">Total CV <b>{{post.applicantcount}}</b></span></div>
+                  <div class="post-interview">
+                  <i ng-if="post.status=='8001'" class="icon-small icon ion-gorilla-empty" ></i>
+                  <i ng-repeat="interview in post.interviews |  orderBy: sequence">
+                          <i style="width:30px;" class="icon {{interview.icon}}"></i>
+                          &nbsp;{{interview.applicantcount}}
+                          <!--<img ng-src="{{interview.icon}}" style="width:30px;" />-->
+                  </i>
+                </div>
+                  <ion-option-button class="option-btn"
+                                     ng-click="openPost(post)">
+                    Open
+                  </ion-option-button>
+                  <ion-option-button ng-if="post.status=='8002' || post.status=='8005'" class="option-btn option-gray"
+                                     ng-click="closePost(post, $index)">
+                    Close
+                  </ion-option-button>
+                  <ion-option-button ng-if="post.status=='8003'" class="button-energized"
+                                     ng-click="completePost(post, $index)">
+                    Complete
+                  </ion-option-button>
+                  <ion-option-button class="option-btn option-del"
+                                     ng-click="deletePost(post, $index)">
+                    Delete
+                  </ion-option-button>
+      </ion-item>
+    </ion-list>
+
+  </ion-content>
+
+
+</ion-view>

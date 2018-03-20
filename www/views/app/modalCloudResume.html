@@ -1,0 +1,24 @@
+        <ion-modal-view>
+          <ion-header-bar class="login-bar-bcg">
+              <h1 class="title">Select Resume</h1>
+              <div class="buttons">
+              <button ng-click="adc2.closeModal()" class="button button-icon ion-android-close"></button>
+              </div>
+          </ion-header-bar>
+        <ion-content >
+          <ion-list class="animate-ripple"
+                    show-reorder=false>
+            <ion-item ng-repeat="resume in resumes"
+                      class="item item-icon-left item-icon-right" ng-click="adc2.selectResumeFromCloud(resume)">
+
+              <i class="icon ion-cloud"></i>
+              {{resume.filename}}
+              <i ng-if="resume.filetype=='Image'" class="badge badge-royal">I</i>
+              <i ng-if="resume.filetype=='PDF'" class="badge badge-assertive">P</i>
+              <i ng-if="resume.filetype=='Text'" class="badge badge-dark">T</i>
+              <i ng-if="resume.filetype=='MS Word'" class="badge badge-energized">M</i>
+            </ion-item>
+          </ion-list>
+        </ion-content>
+
+        </ion-modal-view>

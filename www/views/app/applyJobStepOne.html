@@ -1,0 +1,72 @@
+<ion-view hide-nav-bar="true">
+
+    <div class="bar bar-header bar-positive" id="map_header">
+        <button class="button" ng-click="pdc1.getPrevCache()">Cancel</button>
+        <h1 class="title-text"><span ng-click="goHome()">Applying Job</span></h1>
+         <button class="button" ng-click="resetCache()">Reset</button>
+    </div>
+
+  <ion-content class="jobsearch-has-subheader normal-header">
+	<div class="content-box">
+    <!--<i mg src={{posting.stepone}} style="width:35px;" /> -->
+		<div class="postjobStep">
+			<div class="divTable" style="border: none;">
+				<div class="divRow">
+					<div class="divCell">
+						<div>
+							<div class="stepImg">
+								<img src="img/icon_circle_orange.png" style="width:40px;" />
+								<div class="stepOne"><font color="#ffffff" style="" >1</font></div>
+							</div>
+						</div>
+					</div>
+					<div class="divCell">
+						<div>
+							<div class="stepImg">
+								<img src="img/icon_circle_yellow.png" style="width:40px;" />
+								<div class="stepOne"><font color="#ccc" style="" >2</font></div>
+							</div>
+						</div>
+					</div>
+
+				</div>
+			</div>
+		</div>
+        
+         <h5 class="sub-title sub">Basic Information</h5>        
+   <form name="applicationForm" novalidate="" style="height: 245px;" >
+        <div class="list input-box">
+
+            <label class="item item-input input-type1" ng-class="{ 'has-errors' : applicationForm.name.$invalid, 'no-errors' : applicationForm.name.$valid}">
+              <span class="input-label">Name</span>
+              <input type="text" name="name" ng-model="applying.name"  required>
+            </label>
+
+            <div class="error-container" ng-show="applicationForm.name.$error" ng-messages="applicationForm.name.$error">
+              <div ng-messages-include="views/app/error-list.html"></div>
+            </div>
+            <label class="item item-input input-type1" ng-class="{ 'has-errors' : applicationForm.phone.$invalid, 'no-errors' : applicationForm.phone.$valid}">
+              <span class="input-label">Phone</span>
+              <input type="tel" name="phone" ng-model="applying.phone" numbers-only required>
+            </label>
+
+            <div class="error-container input-type1" ng-show="applicationForm.phone.$error" ng-messages="applicationForm.phone.$error">
+              <div ng-messages-include="views/app/error-list.html"></div>
+            </div>
+            <label class="item item-input input-type1" ng-class="{ 'has-errors' : applicationForm.email.$invalid, 'no-errors' : applicationForm.email.$valid}">
+              <span class="input-label">Email</span>
+              <input  type="email" name="email" ng-model="applying.email"  required>
+            </label>
+
+            <div class="error-container input-type1" ng-show="applicationForm.email.$error" ng-messages="applicationForm.email.$error">
+              <div ng-messages-include="views/app/error-list.html"></div>
+            </div>
+
+        </div>
+</form>
+  </ion-content>
+
+    <ion-footer-bar class="footer-bar-custom">
+        <div class="stepbtn stepbtn-active" style="width: 100%;"><a style="" ng-click="saveStep()">Next</a></div>
+    </ion-footer-bar>
+</ion-view>

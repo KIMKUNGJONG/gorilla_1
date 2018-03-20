@@ -1,0 +1,579 @@
+/* Empty. Add your own CSS if you like */
+body {
+  cursor: url('http://ionicframework.com/img/finger.png'), auto;
+}
+.pullCenter title{
+	text-align:center;
+}
+.bar {
+    background-size: 100% 0px;
+}
+.nav-bar-block, .bar {
+	background-color: #fabc37;
+}
+
+.button.ng-hide{
+  display:none;
+}
+.menu .bar.bar-header.expanded {
+    background-image: url('../img/material-graphite.jpg');
+    background-size: 120%;
+    background-position: 0%;
+    /*transition: all .5s ease-in-out;*/
+}
+.menu-alarm {
+    top: 16px;
+    right: 50px;
+    position: absolute;
+    height: 30px;
+	width: 29px;
+}
+.menu-setting {
+    top: 16px;
+    right: 10px;
+    position: absolute;
+    height: 30px;
+	width: 33px;
+}
+.postjob{
+	margin-top: 3px;
+	margin-left: 2px;
+	margin-right: 2px;
+    border-width: 1px;
+    border-radius: 3px;
+    border-color: #f2f2f2;
+    border-style: solid;
+}
+.postjob .posthead1{
+	width: 100%;
+	background-color: #f79429;
+}
+.postjob .posthead2{
+	width: 100%;
+    height: 65px;
+	background-color: white;
+}
+.postjob .posthead3{
+	width: 100%;
+	background-color: #a7a7a7;
+}
+.postjob .posthead1 .postTitle{
+	color: white;
+	margin-left: 10px;
+	font-size: 16px;
+	font-weight: bold;
+	padding-top: 5px;
+}
+.postjob .posthead1 .postDate{
+	padding-left: 10px;
+    font-size: 13px;
+    color: white;
+}
+.postjob .posthead1 .postAgo{
+	margin-left: 10px;
+	padding-bottom: 5px;
+    font-size: 13px;
+    color: white;
+}
+.postjob .posthead2 .postTitle{
+	color: #f79429;
+	margin-left: 10px;
+	font-size: 18px;
+	font-weight: bold;
+	padding-top: 5px;
+}
+.postjob .posthead2 .postDate{
+	padding-left: 10px;
+}
+.postjob .posthead2 .postAgo{
+	margin-left: 10px;
+	padding-bottom: 5px;
+}
+.postjob .postContent{
+	width: 100%;
+	background-color: white;
+    height: 152px;
+}
+.postjob .postContent .profilImg{
+	width: 35px;
+    height: 45px;
+	position: absolute;
+	margin-top: 10px;
+	left: 15px;
+}
+.postjob .postContent .profilTxt{
+	position: absolute;
+    margin-top: 20px;
+    left: 60px;
+    font-weight: bold;
+}
+.postjob .postContent .calenderImg{
+	background-image: url('../img/icon_job_postings_12.png');
+	width: 74px;
+    height: 72px;
+	position: absolute;
+	margin-top: 5px;
+	right: 10px;
+}
+.postjob .postContent .calenderImg .calenderTxt{
+	padding-top: 33px;
+    padding-left: 23px;
+    color: red;
+}
+.postjob .postContent .conList{
+	padding-top: 70px;
+}
+.divTable
+{
+	display: table;
+    width: 99%;
+    border-spacing: 5px;
+    border-width: 1px;
+    border-style: solid;
+    margin-left: auto;
+    margin-right: auto;
+    border-color: #dbdbdb;
+}
+
+.divRow
+{
+   display:table-row;
+
+}
+
+.divCell
+{
+	float:left;
+	display:table-column;
+	width:16.66666%;
+	text-align: center;
+}
+.divCell .cell{
+    border-radius: 5px;
+    width: 30px;
+    margin-left: auto;
+    margin-right: auto;
+    background-color: #f9c083;
+}
+.divCell2
+{
+	float:left;
+	display:table-column;
+	width:20%;
+	text-align: center;
+}
+.divCell3
+{
+	float:left;
+	display:table-column;
+	width:33.33%;
+	text-align: center;
+}
+.divCellCout
+{
+	float:left;
+	display:table-column;
+	width:16.66666%;
+	text-align: center;
+}
+.postjobStep{
+	margin-top: 5px;
+	background:url('../img/icon_line_green.png') no-repeat center center;
+}
+.postjobStep .stepImg{
+	position: relative;
+}
+.postjobStep .stepOne{
+	position: absolute;
+    top: 8px;
+    text-align: center;
+    width: 100%;
+    z-index: 10;
+}
+.footer-bar-custom {
+    background: #f7f7f7;
+    color: white;
+    font-weight: bold; padding: 15px 20px; border-top: 1px solid #e4e4e4;
+	text-align: center;
+    height: 75px;
+    width: 100%;
+    position: absolute;
+    bottom: 0px;
+    -webkit-transform: translate3d(0, 0, 0);
+    transform: translate3d(0, 0, 0);
+    z-index: 5
+	align-items: center;
+}
+.footer-bar-custom .item-left,
+.footer-bar-custom .item-center,
+.footer-bar-custom .item-right {
+	position: absolute;
+}
+
+
+.footer-bar-custom .item-center {
+	left: 50%;
+	-webkit-transform: translateX(-50%);
+	transform: translateX(-50%)
+}
+.postjob .posthead1 .postDetailBt{
+	background-color: white;
+    border-style: solid;
+    border-radius: 5px;
+    text-align: center;
+    float: right;
+    color: #f79429;
+    margin-top: -50px;
+    margin-right: 15px;
+    padding: 5px;
+    font-size: 13px;
+}
+.normalSetBt{
+	background-color: #d9d9d9;
+    width: 130px;
+    height: 30px;
+    border-radius: 5px;
+    padding-top: 3px;
+    margin-left: auto;
+    margin-right: auto;
+}
+.recentiyBt{
+    width: 100px;
+	height: 35px;
+    border-radius: 5px;
+    padding-top: 5px;
+    border-color: #f79429;
+    border-width: 2px;
+    border-style: solid;
+    /* padding: 10px; */
+    padding-left: 10px;
+    padding-right: 10px;
+}
+.recentiyBts{
+    height: 30px;
+    border-radius: 5px;
+    padding-top: 4px;
+}
+.recsntlyDiv{
+	margin-top: 1px;
+    border-width: 1px;
+    border-color: #e6e6e6;
+    height: 100px; background: #fff; padding: 20px 0;
+    border-top-style: solid; overflow: hidden; height: 210px;
+}
+.detailDiv{
+	border-width: 2px;
+    border-color: #d9d9d9;
+    border-style: solid;
+    font-size: 10px;
+    margin: 5px;
+}
+.sigup{
+	border-width: 1px;
+    border-color: #E85858;
+    border-style: solid;
+    font-size: 12px;
+    color:white;
+    width: 40px;
+    height: 20px;
+    background-color: #f79429;
+    border-radius: 5px;
+    text-align: center;
+}
+
+
+$stable:                          #f8f8f8 !default;
+
+.scroll {
+  padding: 10px 0 50px !important;
+}
+.messages {
+  display: -webkit-box !important;
+  display: -moz-box !important;
+  display: -ms-flexbox !important;
+  display: -webkit-flex !important;
+  display: flex !important;
+  -webkit-align-content: center !important;
+  -ms-flex-line-pack: center !important;
+  align-content: center !important;
+  -webkit-box-align: center !important;
+  -moz-box-align: center !important;
+  -webkit-align-items: center !important;
+  -ms-flex-align: center !important;
+  align-items: center !important;
+  margin-bottom: 20px !important;
+  .message {
+    -webkit-box-flex: 1 !important;
+    -moz-box-flex: 1 !important;
+    -webkit-flex: 1 1 auto !important;
+    -ms-flex: 1 1 auto !important;
+    flex: 1 1 auto !important;
+    padding: 10px !important;
+    -webkit-transition: all 250ms ease-in-out !important;
+    transition: all 250ms ease-in-out !important;
+    overflow: hidden !important;
+    text-align: left !important;
+    -webkit-transform: translate3d(0, 0, 0) !important;
+    -moz-transform: translate3d(0, 0, 0) !important;
+    transform: translate3d(0, 0, 0) !important;
+  }
+}
+/*.time {
+  -webkit-box-flex: 0 !important;
+  -moz-box-flex: 0 !important;
+  -webkit-flex: 0 1 auto !important;
+  -ms-flex: 0 1 auto !important;
+  flex: 0 1 auto !important;
+  -webkit-align-self: auto !important;
+  -ms-flex-item-align: auto !important;
+  align-self: auto !important;
+  width: 120px !important;
+  text-align: center !important;
+  padding: 0 0 0 0 !important;
+  -webkit-transition: all 250ms ease-in-out !important;
+  transition: all 250ms ease-in-out !important;
+  -webkit-transform: translate3d(10px, 0, 0) !important;
+  -moz-transform: translate3d(10px, 0, 0) !important;
+  transform: translate3d(10px, 0, 0) !important;
+  &.slide-right {
+    -webkit-transform: translate3d(130px, 0, 0) !important;
+    -moz-transform: translate3d(130px, 0, 0) !important;
+    transform: translate3d(130px, 0, 0) !important;
+  }
+}*/
+//This will change
+.messages.other {
+  .message {
+    -webkit-transform: translate3d(0, 0, 0) !important;
+    -moz-transform: translate3d(0, 0, 0) !important;
+    transform: translate3d(0, 0, 0) !important;
+    text-align: right !important;
+  }
+  .message.slide-right {
+    -webkit-transform: translate3d(120px, 0, 0) !important;
+    -moz-transform: translate3d(120px, 0, 0) !important;
+    transform: translate3d(120px, 0, 0) !important;
+  }
+  span {
+    color: black !important;
+    background-color: #C7C7CC !important;
+  }
+}
+.spanDiv {
+  background: #007AFF !important;
+  display: inline-block !important;
+  color: white !important;
+  padding: 10px !important;
+  border-radius: 10px !important;
+  text-align: left !important;
+  max-width: 240px !important;
+  margin-left: 10px;
+  margin-top: 10px;
+}
+.dateDiv{
+	height: 30px;
+    padding-left: 10px;
+    padding-top: 5px;
+    background-color: #AEB3B3;
+    color: white;
+}
+
+.transparent {
+  background: transparent !important;
+}
+.image-modal {
+  width: 100% !important;
+  height: 100%;
+  top: 0 !important;
+  left: 0 !important;
+}
+.fullscreen-image {
+  max-width: 100%;
+  max-height: 100%;
+  bottom: 0;
+  left: 0;
+  margin: auto;
+  overflow: auto;
+  position: fixed;
+  right: 0;
+  top: 0;
+}
+.slider {
+  width: 100%;
+  height: 100%;
+}
+
+p.info {
+  position: absolute;
+  bottom: 55px;
+  margin: 0 auto;
+  width: 100%;
+  display: block;
+  text-align: center;
+  font-size: 28px;
+  color: #ffffff;
+}
+
+/* Fix modal backdrop for smaller devices */
+@media (max-width: 679px) {
+  .active .modal-backdrop-bg {
+    opacity: .5;
+  }
+  .modal-backdrop-bg {
+    -webkit-transition: opacity 300ms ease-in-out;
+    transition: opacity 300ms ease-in-out;
+    background-color: #000;
+    opacity: 0;
+  }
+}
+.preferred-login{
+	width:100%;
+    text-align: center;
+	margin-bottom:15px;
+}
+
+.loginDiv  {
+	width: 100%;
+    margin-left: auto;
+    margin-right: auto;
+    margin-top: 30px;
+    position: absolute;
+}
+.photoDiv{
+    width: 40px;
+    height: 40px;
+    background-repeat: none;
+    background-position: center;
+    background-color: white;
+    -moz-border-radius: 50px;
+    -webkit-border-radius: 50px;
+    border-radius: 50px;
+    margin-top: 10px;
+    margin-left: 10px;
+    position: absolute;
+
+}
+.signDiv{
+    background-color: white;
+    color: #f79429;
+    border-radius: 5px;
+    /* padding: 5px; */
+    position: absolute;
+    margin-top: 75px;
+    right: 15px;
+    font-size: 10px;
+    width: 40px;
+    text-align: center;
+    padding-top: 5px;
+    padding-bottom: 5px;
+}
+.sign2Div{
+    background-color: white;
+    color: #f79429;
+    border-radius: 5px;
+    /* padding: 5px; */
+    position: absolute;
+    margin-top: 120px;
+    right: 15px;
+    font-size: 10px;
+    width: 40px;
+    text-align: center;
+    padding-top: 5px;
+    padding-bottom: 5px;
+}
+.sign3Div{
+    background-color: white;
+    color: #f79429;
+    border-radius: 5px;
+    /* padding: 5px; */
+    position: absolute;
+    margin-top: 120px;
+    right: 60px;
+    font-size: 10px;
+    width: 40px;
+    text-align: center;
+    padding-top: 5px;
+    padding-bottom: 5px;
+}
+.nameDiv{
+    color: white;
+    width: 120px;
+    position: absolute;
+    margin-top: 16px;
+    margin-left: 56px;
+    text-align: left;
+    font-family: "Arial Bold";
+  	font-size: 15px;
+  	font-style: normal;
+  	font-variant: normal;
+  	font-weight: 500;
+  	line-height: 26.4px;
+    text-indent: 16
+}
+#container.expanded .expander {
+    padding-left: 13px;
+    background-position: left center;
+    background-repeat: no-repeat;
+    background-image: url(images/expanded.gif);
+}
+
+#container.collapsed .expander {
+    padding-left: 13px;
+    background-position: left center;
+    background-repeat: no-repeat;
+    background-image: url(images/collapsed.gif);
+}
+.myPhotoDiv{
+    background-image: url('../img/icon_camera.png');
+    text-align: center;
+    height: 100px;
+    border-width: 1px;
+    border-style: solid;
+    border-color: #f79429;
+    width: 100px;
+    margin-left: auto;
+    margin-right: auto;
+    border-radius: 5px;
+}
+.myPhotoDiv .img{
+    width: 95px;
+    height: 95px;
+    margin-top: 2px;
+    border-radius: 3px;
+}
+.myProfilLeftDiv{
+    float: left;
+    width: 40%;
+    padding-left: 10px;
+    padding-top: 5px;
+    color: #F79429;
+}
+.myProfilRightDiv{
+    float: right;
+    width: 60%;
+    padding-right: 10px;
+}
+.myProfilRightDiv .myProfilRightInput{
+    border: 1;
+    border-width: 1px;
+    border-color: #F79429;
+    border-style: solid;
+    border-radius: 5px;
+    width: 100%;
+    padding-left: 10px;
+}
+.myProfilDiv{
+    border-width: 1px;
+    border-color: #F79429;
+    border-style: solid;
+    border-radius: 5px;
+    width: 95%;
+    height: 150px;
+    margin-left: 10px;
+    margin-right: 10px;
+}
+.button-right{
+  display: block !important;
+  width: 100% !important;
+  text-align:right !important;
+}

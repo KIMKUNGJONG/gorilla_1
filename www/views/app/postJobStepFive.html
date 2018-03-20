@@ -1,0 +1,173 @@
+<ion-view ng-init="init()" hide-nav-bar="true">
+
+
+    <div class="bar bar-header bar-positive" id="map_header">
+        <button class="button" ng-click="getPrevCache()">Back</button>
+        <h1 class="title"><span ng-click="goHome()">goRilla</span></h1>
+
+    </div>
+
+    
+   <ion-content class="jobsearch-has-subheader normal-header">
+        <div class="content-box">
+
+
+            <h5 class="sub-title">Posting a Job</h5>
+
+            <div>
+                <!--<img src={{posting.stepone}} style="width:35px;" /> -->
+                <div class="postjobStep">
+                    <div class="divTable" style="border: none;">
+                        <div class="divRow">
+                            <div class="divCell divcellx5">
+                                <div>
+                                    <div class="stepImg">
+                                        <img src="img/icon_circle_yellow.png" style="width:40px;" />
+                                        <div class="stepOne">
+                                            <font color="#ccc" style="">1</font>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="divCell divcellx5">
+                                <div>
+                                    <div class="stepImg">
+                                        <img src="img/icon_circle_yellow.png" style="width:40px;" />
+                                        <div class="stepOne">
+                                            <font color="#ccc" style="">2</font>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="divCell divcellx5">
+                                <div>
+                                    <div class="stepImg">
+                                        <img src="img/icon_circle_yellow.png" style="width:40px;" />
+                                        <div class="stepOne">
+                                            <font color="#ccc" style="">3</font>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="divCell divcellx5">
+                                <div>
+                                    <div class="stepImg">
+                                        <img src="img/icon_circle_yellow.png" style="width:40px;" />
+                                        <div class="stepOne">
+                                            <font color="#ccc" style="">4</font>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="divCell divcellx5">
+                                <div>
+                                    <div class="stepImg">
+                                        <img src="img/icon_circle_orange.png" style="width:40px;" />
+                                        <div class="stepOne">
+                                            <font color="#fff" style="">5</font>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+              <h5 class="sub-title sub">Confirm</h5>
+            <div class="input-box">          
+           <div> 
+			<label class="item item-input input-type1">
+			  <span class="item-text-wrap" style="font-weight:bold;">{{posting.steptwo.title}}</span>
+			</label>
+		</div>
+		<div>
+			<label class="item item-input input-type1">
+			  <span class="input-label" style="font-weight:bold;">Job Description</span>
+			</label>
+		</div>
+		<div>
+      <div>
+  			<label class="item item-input input-type1">
+  			  <span class="input-label">Company</span>
+  			  <input type="text" ng-model="posting.stepone.name" disabled="true">
+          <i class="icon ion-images" ng-click="openCompanyPhoto(posting.stepone.companyprofile_id)"></i>
+  			</label>
+  		</div>
+      <div>
+  			<label class="item item-input item-icon-right input-type1">
+  			  <span class="input-label">Location</span>
+  			  <span class="item-text-wrap">{{posting.stepone.fulladdress}}</span>
+                
+            <img src="../../img/icon-target.png" style="width: 20px; height: 20px; position: absolute; right: 20px;" ng-click="openMapLoc(posting.stepone.latitude, posting.stepone.longitude)">
+  			</label>
+  		</div>
+      <div>
+  			<div class="item item-input input-type1">
+          <span class="input-label">Unit</span>
+          <span class="item-text-wrap">{{posting.stepone.unit}}</span>
+  			</div>
+  		</div>
+      <div>
+  			<label class="item item-input item-icon-right input-type1">
+          <span class="input-label" style="width: 25%;">Application Deadline</span>
+  			  <span class="input-label">{{posting.steptwo.applicationdeadline| date: "yyyy-MM-dd H:mm"}}</span>
+  			</label>
+  		</div>
+      <div>
+      <label class="item item-input input-type1">
+        <span class="input-label">Skill #</span>
+        <input type="text" ng-model="posting.steptwo.tags" disabled="true">
+      </label>
+      </div>
+		</div>
+
+    <div>
+      <label class="item item-input input-type1">
+        <span class="input-label" style="font-weight:bold;">Additional Info</span>
+        <!--<button ng-if="posting.stepthree.filetype=='3003'" class="button" ng-click="loadPdf()">
+            load PDF
+        </button>-->
+      </label>
+    </div>
+        <div ng-if="posting.stepthree.filetype=='3003'">
+          <ng-pdf ng-if="pdfUrl" template-url="views/app/pdfviewer4.html" canvasid="pdf4"  scale="page-fit"></ng-pdf>
+        </div>
+        <div ng-if="posting.stepthree.filetype=='3001'">
+          <ion-scroll max-zoom="5" overflow-scroll="false" style="width: 90%; height: 80%" zooming="true" direction="xy" class="has-header">
+            <img data-ng-src="{{posting.stepthree.content}}" style="float:center;" />
+          </ion-scroll>
+        </div>
+        <div ng-if="posting.stepthree.filetype=='3004'">
+            <label class="item item-input input-type1">
+              <textarea ng-model="posting.stepthree.content" rows="6" style="border-style: inset;border-width: 1px; margin-left: -7px;" disabled="true"></textarea>
+            </label>
+        </div>
+    <div>
+			<label class="item item-input item-icon-right input-type1">
+			  <span class="input-label" style="font-weight:bold;">Interview process</span>
+			</label>
+		</div>
+		<div>
+        <ion-list class="animate-ripple">
+          <ion-item ng-repeat="interview in posting.stepfour.interviews"
+              class="item item-icon-left">
+            <i class="icon {{interview.icon}}"></i>
+            {{interview.name}}
+          </ion-item>
+        </ion-list>
+	</div>
+  <div ng-if="chartOn"  google-chart="Timeline" ng-model="interviewTLData" class="mediumGraph"></div>
+       </div>
+  </ion-content>
+    
+    
+   <ion-footer-bar class="footer-bar-custom">
+
+        <div class="stepbtn stepbtn-on" style="width: calc(50% - 5px); margin-right: 10px;"><a href="#/app/postJobStepFour" style="" ng-click="">Back</a></div>
+
+        <div class="stepbtn stepbtn-active" style="width: calc(50% - 5px);"><a style="" ng-click="postJob()">Post</a></div>
+    </ion-footer-bar>    
+    
+    
+</ion-view>

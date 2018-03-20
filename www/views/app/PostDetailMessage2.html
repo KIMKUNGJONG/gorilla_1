@@ -1,0 +1,82 @@
+<ion-view class="homeView" hide-nav-bar="true" ng-init="init()">
+  <ion-header-bar class="bar search-bar-bcg">
+    <div class="item-input">
+      <input type="text" readonly="readonly" class="ion-autocomplete"
+                             placeholder="Q&A">
+                             <i class="icon-small icon ion-gorilla-empty" ></i>
+                             <i class="icon-small icon ion-gorilla-empty" ></i>
+                             <i class="icon-small icon ion-gorilla-empty" ></i>
+      <i class="icon-small icon ion-refresh" ng-click="getQnALatest()"></i>
+    </div>
+  </ion-header-bar>
+  <ion-floating-menu has-footer="true" menu-open-icon="ion-arrow-shrink" menu-icon="ion-ios-more" menu-open-color="#2AC9AA" menu-color="#f79429">
+    <ion-floating-item icon="ion-ios-undo" click="goBack()"></ion-floating-item>
+    <ion-floating-item icon="ion-ios-home" click="goHome()"></ion-floating-item>
+  </ion-floating-menu>
+  <ion-content overflow-scroll="false" has-bouncing="true" class="jobsearch-has-subheader has-footer" delegate-handle="userMessageScroll"
+		on-scroll="checkScroll()">
+
+		<div ng-repeat="message in messages" class="message-wrapper" ng-init="$last && refreshScroll(user._id === message.userId)"
+			on-hold="onMessageHold($event, $index, message)">
+
+			<div ng-if="user._id !== message.userId">
+
+				<img ng-click="viewProfile(message)" class="profile-pic left" ng-src="{{toUser.pic}}" onerror="onProfilePicError(this)" />
+
+				<div class="chat-bubble left">
+					<img ng-click="photoBrowser(message)" ng-if="message.photo" ng-src="{{message.photo}}" ng-success="refreshScroll(scrollDown)"
+					/>
+					<div ng-if="!message.photo" class="message" ng-bind-html="message.text | nl2br" autolinker>
+					</div>
+
+					<div class="message-detail">
+						<span ng-click="viewProfile(message)" class="bold">{{toUser.username}}</span>,
+						<span am-time-ago="message.date"></span>
+					</div>
+
+				</div>
+			</div>
+
+			<div ng-if="user._id === message.userId">
+
+				<img ng-click="viewProfile(message)" class="profile-pic right" ng-src="{{user.pic}}" onerror="onProfilePicError(this)" />
+
+				<div class="chat-bubble right">
+
+					<img ng-click="photoBrowser(message)" ng-if="message.photo" ng-src="{{message.photo}}" ng-success="refreshScroll($last)"
+					/>
+
+					<div ng-if="!message.photo" class="message" ng-bind-html="message.text | nl2br" autolinker>
+					</div>
+
+					<div class="message-detail">
+						<span ng-click="viewProfile(message)" class="bold">{{user.username}}</span>,
+						<span am-time-ago="message.date"></span>
+					</div>
+
+				</div>
+
+			</div>
+
+			<div class="cf"></div>
+
+		</div>
+	</ion-content>
+
+	<form name="sendMessageForm" ng-submit="sendMessage(sendMessageForm)" novalidate>
+		<ion-footer-bar class="bar-stable item-input-inset message-footer" keyboard-attach>
+			<label class="item-input-wrapper">
+                      <textarea ng-model="input.message" value="" placeholder="Send a message..." required minlength="1" maxlength="1500" msd-elastic></textarea>
+                  </label>
+			<div class="footer-btn-wrap">
+				<button class="button button-icon icon ion-images button-dark button-clear photo" type="button" ng-if="!input.message || input.message === ''"
+					on-tap="sendPhoto()">
+                </button>
+				<button class="button button-icon icon ion-android-send footer-btn" type="submit" ng-disabled="!input.message || input.message === ''">
+                    </button>
+				<a ng-click="refreshScroll(true, 50)" ng-show="!scrollDown" class="scrollDownBtn button button-icon icon ion-android-arrow-dropdown-circle"></a>
+			</div>
+		</ion-footer-bar>
+	</form>
+
+  </ion-view>

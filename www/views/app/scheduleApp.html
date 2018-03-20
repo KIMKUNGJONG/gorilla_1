@@ -1,0 +1,58 @@
+<ion-view  hide-nav-bar="true" ng-init="init()">
+    
+        <!-- header -->
+    <div class="bar bar-header bar-positive" id="map_header">
+        <button class="button" ng-click="goBack()">Back</button>
+        <h1 class="title"><span ng-click="goHome()">goRilla</span></h1>
+        <button class="button-icon" style="right: 45px;" ng-disabled="isToday()" ng-click="getInterviewQuestion()"><img src="../../img/icon-refresh.png" style="width: 18px; height: 18px;"></button>        <button class="button-icon" ng-click="gotoMessage()"><img src="../../img/icon_alarm.png"></button>
+        
+    </div>    
+
+<!--
+  <ion-header-bar class="bar search-bar-bcg">
+    <div class="item-input">
+      <input type="text" readonly="readonly" class="ion-autocomplete"
+                             placeholder="Schedule App Interview" />
+      <i class="icon-small icon ion-gorilla-empty" ></i>
+      <i class="icon-small icon ion-gorilla-empty" ></i>
+      <i class="icon-small icon ion-gorilla-empty" ></i>
+      <span>{{post.title}} - {{applicant.name}}</span>
+      <i class="icon-small icon ion-refresh" ng-click="getInterviewQuestion()"></i>
+    </div>
+  </ion-header-bar>
+-->
+
+  <ion-content class="jobsearch-has-subheader normal-header main-content scheduleApp">
+      
+       <h5 class="sub-title sub" style="margin-top: 10px; padding: 0 20px;">{{post.title}} - {{applicant.name}}</h5>  
+  
+          <div class="item item-icon-left" ion-datetime-picker only-valid="{'after': 'today', 'inclusive': true}" ng-model="timeslot.closing">
+              <i class="icon ion-ios-calendar-outline positive"></i>
+              <span class="input-label"><b>Deadline</b><span style="margin-left: 10px; color: #666;">{{timeslot.closing| date: "yyyy-MM-dd HH"}}</span></span>
+          </div>
+
+          <div class="item-input">
+        		  <span class="input-label" style="font-weight: bold;">{{interview.name}}</span>
+        	</div>
+    <ion-list class="animate-ripple"
+              can-swipe=true
+              show-reorder=false>
+      <ion-item ng-repeat="question in questions" class="animated fadeIn" style="border-color: transparent;">
+        <div class="item-input">
+
+      		  <span class="input-label" style="font-weight: bold;">{{question.no}}</span>
+      		  <div style="position: absolute;right: 15px;top:10px;">
+              <span class="input-label" style="font-weight: bold;">{{question.question}}</span>
+            </div>
+
+      	</div>
+
+      </ion-item>
+    </ion-list>
+
+  </ion-content>
+   <ion-footer-bar class="footer-bar-custom">
+
+        <div class="stepbtn stepbtn-on" style="width: 100%;"><a href="#" style="" ng-click="">Submit</a></div>
+    </ion-footer-bar>  
+  </ion-view>

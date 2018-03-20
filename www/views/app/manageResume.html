@@ -1,0 +1,82 @@
+<ion-view hide-nav-bar="true">
+  <!--<ion-nav-title>
+    <span style="color:white;">Job Search</span>
+  </ion-nav-title>
+  <ion-nav-buttons side="right">
+    <a class="icon-right ion-navigate" ng-click="centerOnMe()" style="color:white; font-size: 25px; margin-top: 5px; margin-right: 10px;"></a>
+    <a class="icon-right ion-refresh" ng-click="refreshData()" style="color:white; font-size: 25px; margin-top: 5px; margin-right: 10px;"></a>
+  </ion-nav-buttons>-->
+    
+    <div class="bar bar-header bar-positive" id="map_header">
+          <button class="menuToggle" style="margin-left: -10px;"><img src="../../img/icon_menu.png"></button>
+        <h1 class="title"><span ng-click="dc.goHome()">goRilla</span></h1>
+        <button class="button-icon" ng-click="dc.addResume()" style="right: 40px;"><img src="../../img/icon-plus.png" style="width: 18px; height: 18px;"></button>
+        <button class="button-icon" ng-click="dc.get_userCVList()"><img src="../../img/icon-refresh.png" style="width: 18px; height: 18px;"></button>
+    </div>    
+        
+
+  <!--<ion-nav-buttons side="right">
+    <a class="icon-right ion-refresh" ng-click="dc.get_userCVList()" style="color:white; font-size: 25px; margin-top: 5px; margin-right: 10px;"></a>
+    <a class="icon-right ion-plus-round" ng-click="dc.addResume()" style="color:white; font-size: 25px; margin-top: 5px; margin-right: 10px;"></a>
+  </ion-nav-buttons>-->
+
+  <ion-content class="jobsearch-has-subheader normal-header">
+      <!--<div style="width:100%;height:90px;margin-top:20px;">
+        <div class="item-profile" ng-click="openImagePicker()">
+          <div class="item item-avatar-right" ng-if="me.picture">
+            <img data-ng-src="data:image/png;base64,{{me.picture}}"/>
+          </div>
+          <div class="item item-avatar-right" ng-if="!me.picture">
+            <img data-ng-src="img/camera.png" />
+          </div>
+        </div>
+      </div>-->
+      <!--<ion-refresher
+          pulling-text="Refreshing..."
+          on-refresh="dc.get_userCVList()">
+      </ion-refresher>-->
+      <ion-list class="animate-ripple"
+                can-swipe=true
+                show-reorder=false>
+        <ion-item ng-repeat="resume in resumes" class="animated fadeIn">
+                  <div style="float:left;padding-right: 10px;">
+                    <ionic-letter-avatar ng-if="resume.filetype=='Image'" data="IMG" fontsize="12" height="20" width="20" shape="round" charcount="3"></ionic-letter-avatar>
+                    <ionic-letter-avatar ng-if="resume.filetype=='PDF'" data="PDF" fontsize="12" height="20" width="20" shape="round" charcount="3"></ionic-letter-avatar>
+                    <ionic-letter-avatar ng-if="resume.filetype=='Text'" data="TXT" fontsize="12" height="20" width="20" shape="round" charcount="3"></ionic-letter-avatar>
+                    <ionic-letter-avatar ng-if="resume.filetype=='MS Word'" data="MSW" fontsize="12" height="20" width="20" shape="round" charcount="3"></ionic-letter-avatar>
+                  </div>
+                   <div>
+<h2>{{resume.filename}}</h2>
+                     </div>
+          <!--<i class="icon ion-ios-cloud" ng-click="dc.openResume(resume)"></i>-->
+
+
+          <!--<i ng-if="resume.filetype=='Image'" class="badge badge-royal">I</i>
+          <i ng-if="resume.filetype=='PDF'" class="badge badge-assertive">P</i>
+          <i ng-if="resume.filetype=='Text'" class="badge badge-dark">T</i>
+          <i ng-if="resume.filetype=='MS Word'" class="badge badge-energized">M</i>-->
+          <ion-option-button class="button-positive"
+                             ng-click="dc.openResume(resume)">
+            Open
+          </ion-option-button>
+          <ion-option-button class="button-calm"
+                             ng-click="dc.editResume(resume)">
+            Edit
+          </ion-option-button>
+          <ion-option-button class="button-assertive"
+                             ng-click="dc.deleteResume(resume, $index)">
+            Delete
+          </ion-option-button>
+
+        </ion-item>
+      </ion-list>
+
+  </ion-content>
+
+
+  <!--<div id="gorilla-logo-div">
+    <div class="animated hinge">
+    <img src="img/gorilla-logo.png" style="height:120px;">
+    </div>
+  </div>-->
+</ion-view>

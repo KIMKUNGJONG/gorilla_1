@@ -1,0 +1,40 @@
+<ion-view  hide-nav-bar="true" ng-init="init()">
+
+        <!-- header -->
+    <div class="bar bar-header bar-positive" id="map_header">
+        <button class="button" ng-click="goBack()">Back</button>
+        <h1 class="title"><span ng-click="goHome()">goRilla</span></h1>
+        <button class="button-icon" ng-click="getInterviewQuestion()"><img src="../../img/icon-refresh.png" style="width: 18px; height: 18px;"></button>
+    </div>
+    
+  <ion-content class="jobsearch-has-subheader normal-header">
+        <div class="content-box">
+          <div class="item item-icon-left input-type1">
+               <i class="icon ion-ios-calendar-outline positive"></i>
+              <span class="input-label" style="margin-left: 25px; position: relative; top: 1px"><b>Deadline</b><span style="margin-left: 10px; color: #666;">{{timeslot.closing| date: "yyyy-MM-dd HH"}}</span></span>
+          </div>
+
+          <div class="item">
+        		  <span class="input-label" style="font-weight: bold;">{{interview.name}} Questions</span>
+        	</div>
+    <ion-list class="animate-ripple"
+              can-swipe=true
+              show-reorder=false>
+      <ion-item ng-repeat="question in questions" style="border-color: transparent;">
+
+        <div class="list card" style="margin-bottom: 10px;">
+          <label class="item item-input item-floating-label">
+           <span class="input-label">Q {{question.no}}: {{question.question}}</span>
+            <input type="text" placeholder="Q {{question.no}}: {{question.question}}" ng-model="question.answer">
+          </label>
+
+        </div>
+      </ion-item>
+    </ion-list>
+   </div>
+  </ion-content>
+   <ion-footer-bar class="footer-bar-custom">
+
+        <div class="stepbtn stepbtn-active" style="width: 100%;"><a href="#" style="" ng-click="">Submit</a></div>
+    </ion-footer-bar>  
+  </ion-view>

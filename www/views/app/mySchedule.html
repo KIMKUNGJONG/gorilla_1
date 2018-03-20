@@ -1,0 +1,28 @@
+
+    <ion-view hide-nav-bar="true">
+        
+        <!-- header -->
+    <div class="bar bar-header bar-positive" id="map_header">
+        <button class="button" ng-click="goBack()">Back</button>
+        <h1 class="title"><span ng-click="goHome()">goRilla</span></h1>
+        <button class="button-icon" ng-disabled="isToday()" ng-click="today()"><img src="../../img/icon-refresh.png" style="width: 18px; height: 18px;"></button>
+    </div>
+        
+    <ion-content scroll="false" class="jobsearch-has-subheader main-content normal-header">
+        
+        <div class="content-box">
+
+
+            <h5 class="sub-title" style="margin-bottom: 3px;">My Schedule</h5> 
+            <h5 class="sub-title sub" style="margin-top: 3px;">{{calendar.currentDate | date: 'MMMM dd, yyyy'}}</h5>  
+        <calendar class="calndar-data" ng-model="calendar.currentDate" calendar-mode="calendar.mode" event-source="calendar.eventSource"
+                  query-mode="calendar.queryMode" range-changed="reloadSource(startTime, endTime)"
+                  event-selected="onEventSelected(event)"
+                  monthview-display-event-template-url="calendar.monthviewDisplayEventTemplateUrl"
+                  monthview-event-detail-template-url="calendar.monthviewEventDetailTemplateUrl"
+                  time-selected="onTimeSelected(selectedTime, events, disabled)" step="60"></calendar>
+            
+        </div>
+    </ion-content>
+
+</ion-view>

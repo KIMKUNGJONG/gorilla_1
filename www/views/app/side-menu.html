@@ -1,0 +1,128 @@
+<ion-side-menus enable-menu-with-back-views="false">
+    <ion-side-menu-content class="post-size-14px" drag-content="false">
+        <ion-nav-bar class="bar app-top-bar">
+            <ion-nav-back-button> </ion-nav-back-button>
+            <ion-nav-buttons side="left">
+                <button class="button button-icon button-clear ion-navicon" menu-toggle="left"> </button>
+            </ion-nav-buttons>
+        </ion-nav-bar>
+        <ion-nav-view name="menuContent"></ion-nav-view>
+    </ion-side-menu-content>
+    <ion-side-menu side="left" class="ion-header-bar">
+        <ion-header-bar style="background: transparent">
+            <p class="gorilla-menu-sns" ng-if="isguest" ng-click="snsLog()">Connected to SNS ></p>
+            <div class="menu-alarm" ng-click="gotoMessage()"><img src="img/alarm.png" style="width:26px;"></div>
+            <div class="menu-setting"><img src="img/icon_setting.png" style="width:28px;" ng-click="profileImg()" /></div>
+            <div class="gorilla-menu" ng-if="me.picture" ng-click="profileImg()"> <img class="gorilla-avatar" data-ng-src="{{me.picture}}" /> </div>
+            <div class="gorilla-menu" ng-if="!me.picture" ng-click="profileImg()"> <img class="gorilla-avatar" data-ng-src="img/camera.png" />
+                <p class="name">{{me.name}}</p>
+                <p class="role">Applicant</p>
+            </div>
+            <!--<div class="img" style="background-image: url({{me.picture}});" ng-click="profileImg()"></div>
+            <div class="signDiv" ng-if="isguest" ng-click="snsLog()">Sign In with SNS</div>-->
+            <!--            <button class="signDiv button icon-left ion-log-in" ng-if="isguest" ng-click="snsLog()"></button>-->
+            <!--            <button class="sign2Div button icon-left ion-log-out" ng-if="islogged" ng-click="logout()"></button>-->
+            <button class="signDiv button icon-left ion-close-circled" ng-if="!isguest" ng-click="closeAccount()"></button>
+            <button class="sign3Div button icon-left ion-social-google" ng-if="me.sns=='google.com'"></button>
+            <button class="sign3Div button icon-left ion-social-twitter" ng-if="me.sns=='twitter.com'"></button>
+            <button class="sign3Div button icon-left ion-social-facebook" ng-if="me.sns=='facebook.com'"></button>
+
+        </ion-header-bar>
+        <ion-content ng-class="theme" style="background-color:#fff; margin-top: 0px;">
+            <ion-list>
+                <h5 class="menu-subtitle">My page</h5>
+                <div style="">
+                    <ion-item class="item-stable" ng-click="toggleGroup(0)" ng-class="{active: isGroupShown(0)}" style="background-color: white;color: #666;">
+                        <div style="float:left;"><img src="img/icon_Man.png" style="width:30px;"></div>
+                        <div style="float:right;width:80%;margin-top:5px;">
+                            <div style="float:left;">Jobs</div>
+                            <div style="float:right;width:20px; font-size: 18px;"><i class="icon" ng-class="isGroupShown(0) ? 'ion-ios-arrow-down' : 'ion-ios-arrow-right'" style="right:10px;"></i></div>
+                        </div>
+                    </ion-item>
+                    <ion-item class="item-accordion" ng-show="isGroupShown(0)" style="border-top: 1px solid #e8e8e8;">
+                        <div>Matched Jobs</div>
+                    </ion-item>
+                    <ion-item class="item-accordion" ng-show="isGroupShown(0)">
+                        <div>Saved Jobs</div>
+                    </ion-item>
+                    <ion-item class="item-accordion" ng-show="isGroupShown(0)">
+                        <div>Applied Jobs</div>
+                    </ion-item>
+                    <ion-item class="item-accordion" ng-show="isGroupShown(0)">
+                        <div style="">Contracts</div>
+                    </ion-item>
+                </div>
+                <div>
+                    <ion-item class="item-stable" ng-click="toggleGroup(1)" ng-class="{active: isGroupShown(1)}" style="background-color: white;color: #666; border-bottom: 1px solid #e1e1e1">
+                        <div style="float:left;"><img src="img/posts.png" style="width:30px;"></div>
+                        <div style="float:right;width:80%;margin-top:5px;">
+                            <div style="float:left;">My Posts</div>
+                            <div style="float:right;width:20px;font-size: 18px;"><i class="icon" ng-class="isGroupShown(0) ? 'ion-ios-arrow-down' : 'ion-ios-arrow-right'" style="right:10px;"></i></div>
+                        </div>
+                    </ion-item>
+                    <ion-item class="item-accordion" ng-show="isGroupShown(1)" style="border-top: 1px solid #e8e8e8;">
+                        <div style="float:left;width:90%;">Job Postings</div>
+                    </ion-item>
+                    <ion-item class="item-accordion" ng-show="isGroupShown(1)">
+                        <div style="float:left;width:90%;">Applicants</div>
+                    </ion-item>
+                </div>
+                <!--<div style="margin-bottom: 2px;">
+                <ion-item class="item-stable" ng-click="toggleGroup(2)" ng-class="{active: isGroupShown(2)}"
+                          style="border-color: transparent;background-color: white;color: #666; border-bottom: 1px solid #e1e1e1">
+                    <div style="float:left;><img src="img/message.png" style="width:30px;"></div>
+                    <div style="float:right;width:80%;margin-top:5px;">
+                        <div style="float:left;width:90%;"  ng-click="gotoMessage()">My Messages</div>
+                    </div>
+                </ion-item>
+            </div>-->
+                <div>
+                    <ion-item class="item-stable" ng-click="toggleGroup(3)" ng-class="{active: isGroupShown(3)}" style="border-color: transparent;background-color: white;color: #666; border-bottom: 1px solid #e1e1e1">
+                        <div style="float:left;"><img src="img/schedule.png" style="width:30px;"></div>
+                        <div style="float:right;width:80%;margin-top:5px;">
+                            <div style="float:left;" ng-click="gotoSchedule()">Schedule</div>
+                        </div>
+                    </ion-item>
+                </div>
+                <div>
+                    <ion-item class="item-stable" ng-click="toggleGroup(7)" ng-class="{active: isGroupShown(7)}" style="border-color: transparent;background-color: white;color: #666; border-bottom: 1px solid #e1e1e1">
+                        <div style="float:left;"><img src="img/resume.png" style="width:30px;"></div>
+                        <div style="float:right;width:80%;margin-top:5px;">
+                            <div style="float:left;" ng-click="gotoResume()">Resume</div>
+                        </div>
+                    </ion-item>
+                </div>
+                <h5 class="menu-subtitle">Information</h5>
+                <div>
+                    <ion-item class="item-stable" ng-click="toggleGroup(4)" ng-class="{active: isGroupShown(4)}" style="border-color: transparent;background-color: white;color: #666; border-bottom: 1px solid #e1e1e1">
+                        <div style="float:left;"><img src="img/rate.png" style="width:30px;"></div>
+                        <div style="float:right;width:80%;margin-top:5px;">
+                            <div style="float:left;" ng-click="rateApp()">Rate our app</div>
+                        </div>
+                    </ion-item>
+                </div>
+                <div>
+                    <ion-item class="item-stable" ng-click="toggleGroup(5)" ng-class="{active: isGroupShown(5)}" style="border-color: transparent;background-color: white;color: #666; border-bottom: 1px solid #e1e1e1">
+                        <div style="float:left;"><img src="img/share.png" style="width:30px;"></div>
+                        <div style="float:right;width:80%;margin-top:5px;">
+                            <div style="float:left;" ng-click="gotoShareApp()">Share our app</div>
+                        </div>
+                    </ion-item>
+                </div>
+                <div>
+                    <ion-item class="item-stable" ng-click="toggleGroup(6)" ng-class="{active: isGroupShown(6)}" style="border-color: transparent;background-color: white;color: #666; border-bottom: 1px solid #e1e1e1">
+                        <div style="float:left;"><img src="img/about.png" style="width:30px;"></div>
+                        <div style="float:right;width:80%;margin-top:5px;">
+                            <div style="float:left;">About GoRilla</div>
+                        </div>
+                    </ion-item>
+                </div>
+                
+                <div class="menu-footer">
+                    <img src="../../img/goRilla.png" alt="고릴라로고" >
+                    <div class="sign-out" ng-if="islogged" ng-click="logout()">SignOut</div>
+                </div>
+            </ion-list>
+        </ion-content>
+    </ion-side-menu>
+</ion-side-menus>

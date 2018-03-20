@@ -1,0 +1,104 @@
+<ion-view  hide-nav-bar="true" ng-init="getApplicantsList()">
+  <!--<ion-nav-title>
+    <span style="color:white;">Job Search</span>
+  </ion-nav-title>
+  <ion-nav-buttons side="right">
+    <a class="icon-right ion-navigate" ng-click="centerOnMe()" style="color:white; font-size: 25px; margin-top: 5px; margin-right: 10px;"></a>
+    <a class="icon-right ion-refresh" ng-click="refreshData()" style="color:white; font-size: 25px; margin-top: 5px; margin-right: 10px;"></a>
+  </ion-nav-buttons>-->
+
+    <div class="bar bar-header bar-positive" id="map_header">
+        <button class="button" ng-click="$goBack()">Back</button>
+        <h1 class="title"><span ng-click="goHome()">goRilla</span></h1>
+        <button class="button" ng-click="getApplicantsList()">Reset</button>
+    </div>    
+
+  <ion-content class="jobsearch-has-subheader normal-header">
+
+    <ion-list class="animate-ripple applicants"
+              can-swipe=true
+              show-reorder=false>
+      <ion-item ng-if="post.status != '8001'" ng-repeat="post in postings" ng-style="{'background-color': '#f7f7f7'}"
+      class="item-text-wrap animated bounceInUp">
+
+                  <!--<div ng-if="post.status=='8004'" class="posthead3">-->
+                  <div class="list card" style="margin-bottom: 10px;">
+                    <div class="item-input item-icon-right" style="border-color: transparent;">
+                      <label style="font-weight: bold;">{{post.title}}</label>
+                      <i class="icon-small icon ion-chevron-right" ng-click="actionToPost(post)"></i>
+                    </div>
+                    <div class="item" style="border-color: transparent;">
+                      <span style="font-weight: bold; font-size:12px;" ng-if="post.postingdate">{{post.postingdate | date:'yyyy-MM-dd HH:mm' }} - </span>
+                      <span class="" style="font-weight: bold; font-size:12px;" ng-if="post.applicationdeadline">{{post.applicationdeadline | date:'yyyy-MM-dd HH:mm'}}</span>
+                    </div>
+                    <div class="item process" ng-if="post.hiringtype != '6001'" style="border-color: transparent;">
+                      <span class="on">Start</span>
+                      <i class="icon-small icon ion-chevron-right"></i>
+                      <i ng-repeat="interview in post.interviews |  orderBy: sequence">
+                        <span ng-if="(post.interviewstage>=interview.sequence) " class="">1st</span>
+                        <span ng-if="(post.interviewstage<interview.sequence)" class="">2nd</span>
+                      </i>
+
+                      <span class="">final</span>
+                    </div>
+                  </div>
+
+                <i ng-repeat="applicant in post.applicants |  orderBy: userstatus">
+                  <div class="list card" style="margin-bottom: 5px;">
+                      <div class="item-input item-icon-right" style="border-color: transparent;">
+                        <label class="item" style="font-weight: bold;">{{applicant.name}}
+                          </label>
+
+                          <div class="buttons">
+                            <i class="button button-icon ion-chevron-right" ng-click="openResume(post, applicant)"></i>
+                            <a ng-href="tel:{{applicant.phone}}"><button class="button button-icon ion-android-call balanced" ></button></a>
+
+                            <button ng-if="applicant.userstatus=='1201'" class="button button-icon ion-ribbon-b positive"></button>
+                            <button ng-if="applicant.userstatus=='1202'" class="button button-icon ion-ribbon-b assertive"></button>
+                            <button ng-if="applicant.userstatus=='1203' || applicant.userstatus=='1104'" class="button button-icon ion-ribbon-b balanced"></button>
+                          </div>
+                          <i ng-if="((post.status!='8004')&&((applicant.userstatus == undefined) || (applicant.userstatus=='1101') || (applicant.userstatus=='1102') || (applicant.userstatus=='1202') || (applicant.userstatus=='1203')))" class="icon-small icon ion-android-more-vertical assertive" ng-click="actionToApplicant(post, applicant)"></i>
+                          <i ng-if="!((post.status!='8004')&&((applicant.userstatus == undefined) || (applicant.userstatus=='1101') || (applicant.userstatus=='1102') || (applicant.userstatus=='1202') || (applicant.userstatus=='1203')))" class="icon-small icon ion-android-more-vertical" ng-click="actionToApplicant(post, applicant)"></i>
+                      </div>
+
+                    <!-- applicant.userstatus  -->
+                  <div class="item process" style="border-color: transparent;">
+
+                    <i  ng-if="(applicant.userstatus=='1103')" class="icon-small icon ion-ionic assertive"></i>
+                    <span ng-if="((applicant.userstatus == undefined) || ((applicant.userstatus!='1103')))" class="">Start</span>
+                    <span ng-if="!(applicant.userstatus=='1103') && !((applicant.userstatus == undefined) || ((applicant.userstatus!='1103')))">1st</span>
+                    <i class="icon-small icon ion-chevron-right"></i>
+                    <i ng-repeat="interview in post.interviews |  orderBy: sequence">
+                        <!--<i ng-if="post.interviewcount<5" class="icon-small icon ion-gorilla-empty"></i>
+                        <i ng-if="post.interviewcount<4" class="icon-small icon ion-gorilla-empty"></i>
+                        <i ng-if="post.interviewcount<3" class="icon-small icon ion-gorilla-empty"></i>
+                        <i ng-if="post.interviewcount<2" class="icon-small icon ion-gorilla-empty"></i>
+                        <i class="icon-small icon ion-gorilla-empty"></i>-->
+                        <i ng-if="(applicant.interviewstage>=interview.sequence) && (applicant.userstatus=='1103')" class="icon-small icon {{interview.icon}} assertive"></i>
+                        <i ng-if="((applicant.interviewstage>=interview.sequence) && (applicant.userstatus!='1103'))" class="icon-small icon {{interview.icon}} balanced"></i>
+                        <i ng-if="((applicant.interviewstage<interview.sequence) )" class="icon-small icon {{interview.icon}}"></i>
+                        <i class="icon-small icon ion-chevron-right"></i>
+                        <!--<i class="icon-small icon ion-gorilla-empty"></i>
+                        <i ng-if="post.interviewcount<5" class="icon-small icon ion-gorilla-empty"></i>
+                        <i ng-if="post.interviewcount<4" class="icon-small icon ion-gorilla-empty"></i>
+                        <i ng-if="post.interviewcount<3" class="icon-small icon ion-gorilla-empty"></i>
+                        <i ng-if="post.interviewcount<2" class="icon-small icon ion-gorilla-empty"></i>-->
+                        <!-- applicant.interviewstage  -->
+                    </i>
+
+                    <i ng-if="!(applicant.userstatus=='1104')" class="icon-small icon ion-ionic"></i>
+                    <i  ng-if="(applicant.userstatus=='1104')" class="icon-small icon ion-ionic balanced"></i>
+                  </div>
+                </div>
+                </i>
+      </ion-item>
+    </ion-list>
+
+  </ion-content>
+
+    <!--<div id="gorilla-logo-div">
+      <div class="animated hinge">
+      <img src="img/gorilla-logo.png" style="height:120px;">
+      </div>
+    </div>-->
+  </ion-view>

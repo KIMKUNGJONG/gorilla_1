@@ -1,0 +1,67 @@
+<ion-view hide-nav-bar="true">
+    <div class="bar bar-header bar-positive" id="map_header">
+        <button class="button" ng-click="clearResume()">Cancel</button>
+        <h1 class="title"><span ng-click="goHome()">goRilla</span></h1>
+        <button class="button" ng-click="uploadResume()">Uproad</button>
+    </div>
+    <ion-content class="jobsearch-has-subheader normal-header">
+        <div class="content-box">
+            
+            <!-- PDF 리스트 -->
+            <!--
+
+            <h5 class="sub-title">PDF List</h5>
+            <div class="input-box">
+                <div class="item resume-list">
+                    <h5>TimHorton 20170101</h5> </div>
+                <div class="item resume-list">
+                    <h5>TimHorton 20170101</h5> </div>
+            </div>
+
+            -->
+            <h5 class="sub-title">Upload PDF</h5>
+            <div class="input-box">
+                <div class="item  input-type1"> <img src="../../img/camera_small.png" / class="icon-upload" ngf-select ngf-change="selectResume($files)"> </div>
+            </div>
+
+            
+            
+            <!--<ion-list ng-controller="ResumeDataCtrl"
+          show-delete="shouldShowDelete"
+          show-reorder="shouldShowReorder"
+          can-swipe="listCanSwipe">
+  <ion-item ng-repeat="resume in resumes"
+            class="item item-icon-left item-icon-right">
+
+    <i class="icon ion-cloud"></i>
+    {{resume.filename}}
+    <i ng-if="resume.filetype=='Image'" class="badge badge-royal">I</i>
+    <i ng-if="resume.filetype=='PDF'" class="badge badge-assertive">P</i>
+    <i ng-if="resume.filetype=='Text'" class="badge badge-dark">T</i>
+    <i ng-if="resume.filetype=='MS Word'" class="badge badge-energized">M</i>
+    <ion-option-button class="button-positive"
+                       ng-click="openResume(resume)">
+      Open
+    </ion-option-button>
+    <ion-option-button class="button-calm"
+                       ng-click="editResume(resume)">
+      Edit
+    </ion-option-button>
+    <ion-option-button class="button-assertive"
+                       ng-click="resumes.splice($index, 1); deleteResume(resume)">
+      Delete
+    </ion-option-button>
+
+
+
+  </ion-item>
+</ion-list>-->
+            <!--<div class="bar bar-header bar-positive">
+        <button ng-click="$ionicGoBack()" class="button button-clear button-light icon-left ion-chevron-left">Go Back</button>
+    </div>-->
+            <div class="has-header">
+                <ng-pdf ng-if="pdfUrl" template-url="views/app/pdfviewer.html" canvasid="pdf" scale="page-fit"> </ng-pdf>
+            </div>
+        </div>
+    </ion-content>
+</ion-view>

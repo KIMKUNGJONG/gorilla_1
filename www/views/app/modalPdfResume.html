@@ -1,0 +1,17 @@
+        <ion-modal-view>
+        <ion-header-bar class="login-bar-bcg">
+            <h1 class="title">{{title}}</h1>
+            <div class="buttons">
+            <button ng-click="dc.modalpdf.hide()" class="button button-icon ion-ios-close"></button>
+            </div>
+        </ion-header-bar>
+
+        <ion-content >
+
+          <div ng-if="ispdf">
+            <ng-pdf ng-if="pdfUrl" template-url="views/app/pdfviewermodal.html" canvasid="pdf"  scale="page-fit"></ng-pdf>
+          </div >
+
+        </ion-content>
+
+        </ion-modal-view>

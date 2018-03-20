@@ -1,0 +1,17 @@
+<div class="tabs tabs-icon-left">
+    <a class="tab-item" ng-click="goPrevious()">
+        <i class="icon ion-arrow-left-c"></i>
+        Prev
+    </a>
+    <a class="tab-item" ng-click="goNext()">
+        <i class="icon ion-arrow-right-c"></i>
+        Next
+    </a>
+    <a class="tab-item"  ng-click="zoomIn()">+</a>
+    <a class="tab-item"  ng-click="fit()">100%</a>
+    <a class="tab-item"  ng-click="zoomOut()">-</a>
+</div>
+
+<ion-scroll max-zoom="5" overflow-scroll="false" zooming="true" direction="xy">
+    <canvas class="padding" id="pdf" class="rotate0"></canvas>
+</ion-scroll>

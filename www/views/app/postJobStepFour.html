@@ -1,0 +1,130 @@
+<ion-view ng-init="pdc4.init()" hide-nav-bar="true">
+
+    <div class="bar bar-header bar-positive" id="map_header">
+        <button class="button" ng-click="pdc4.getPrevCache()">Back</button>
+        <h1 class="title"><span ng-click="goHome()">goRilla</span></h1>
+        <button class="button" ng-click="clearCache()">Reset</button>
+    </div>
+
+    <ion-content class="jobsearch-has-subheader normal-header btn-footer">
+        <div class="content-box">
+
+
+            <h5 class="sub-title">Posting a Job</h5>
+
+            <div>
+                <!--<img src={{posting.stepone}} style="width:35px;" /> -->
+                <div class="postjobStep">
+                    <div class="divTable" style="border: none;">
+                        <div class="divRow">
+                            <div class="divCell divcellx5">
+                                <div>
+                                    <div class="stepImg">
+                                        <img src="img/icon_circle_yellow.png" style="width:40px;" />
+                                        <div class="stepOne">
+                                            <font color="#ccc" style="">1</font>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="divCell divcellx5">
+                                <div>
+                                    <div class="stepImg">
+                                        <img src="img/icon_circle_yellow.png" style="width:40px;" />
+                                        <div class="stepOne">
+                                            <font color="#ccc" style="">2</font>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="divCell divcellx5">
+                                <div>
+                                    <div class="stepImg">
+                                        <img src="img/icon_circle_yellow.png" style="width:40px;" />
+                                        <div class="stepOne">
+                                            <font color="#ccc" style="">3</font>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="divCell divcellx5">
+                                <div>
+                                    <div class="stepImg">
+                                        <img src="img/icon_circle_orange.png" style="width:40px;" />
+                                        <div class="stepOne">
+                                            <font color="#fff" style="">4</font>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="divCell divcellx5">
+                                <div>
+                                    <div class="stepImg">
+                                        <img src="img/icon_circle_yellow.png" style="width:40px;" />
+                                        <div class="stepOne">
+                                            <font color="#ccc" style="">5</font>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <h5 class="sub-title sub">About Interview</h5>
+            <div class="input-box">
+                <div>
+                    <ion-toggle ng-model="posting.stepfour.cvrequired" ng-change="pdc4.postingChanged()" toggle-class="toggle-calm"><span class="input-label">CV required</span></ion-toggle>
+                </div>
+
+                <div>
+                    <label class="item item-input item-icon-right input-type1">
+      <span class="input-label">Add Interview to this job</span>
+      <button style="position: absolute; right: 14px;" class="icon-right ion-plus-round" ng-click="pdc4.addInterview()"></button>
+    </label>
+                </div>
+
+                <div>
+                    <label class="item item-input item-icon-right input-type1">
+			  <span class="input-label" style="font-weight:bold;">Interview process</span>
+        <button class="smallbtn stepbtn-active" style="right: 20px; position: absolute" ng-click="shouldShowReorder = !shouldShowReorder">
+            Reorder
+        </button>
+			</label>
+                </div>
+                <ion-list class="animate-ripple" show-reorder="shouldShowReorder" can-swipe="listCanSwipe">
+                    <ion-item ng-repeat="interview in posting.stepfour.interviews" class="item item-icon-left">
+                        <!--      <ion-item ng-repeat="interview in posting.stepfour.interviews | orderBy:'sequence'"
+                class="item item-icon-left">
+
+  <button  class="button-clear"><span class="badge badge-assertive">{{$index+1}}</span></button>
+-->
+                        <i class="icon {{interview.icon}}" ng-click="pdc4.openInterview(interview)"></i> {{interview.name}}
+                        <ion-option-button class="button-positive" ng-click="pdc4.openInterview(interview)">
+                            Open
+                        </ion-option-button>
+                        <ion-option-button class="button-calm" ng-click="pdc4.editInterview(interview)">
+                            Edit
+                        </ion-option-button>
+                        <ion-option-button class="button-assertive" ng-click="pdc4.deleteInterview(interview, $index)">
+                            Delete
+                        </ion-option-button>
+                        <ion-reorder-button class="icon ion-ios-drag" on-reorder="pdc4.reorderItem(interview, $fromIndex, $toIndex)">
+                        </ion-reorder-button>
+                    </ion-item>
+                </ion-list>
+
+            </div>
+        </div>
+        <!--<div ng-if="chartOn" google-chart="Timeline" ng-model="interviewTLData" class="mediumGraph"></div>-->
+    </ion-content>
+
+    <ion-footer-bar class="footer-bar-custom">
+
+        <div class="stepbtn stepbtn-on" style="width: calc(50% - 5px); margin-right: 10px;"><a href="#/app/postJobStepThree" style="" ng-click="">Back</a></div>
+
+        <div class="stepbtn stepbtn-active" style="width: calc(50% - 5px);"><a style="" ng-click="pdc4.saveStep('4')">Next</a></div>
+    </ion-footer-bar>
+
+</ion-view>

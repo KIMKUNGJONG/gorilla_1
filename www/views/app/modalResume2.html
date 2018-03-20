@@ -1,0 +1,58 @@
+<ion-view>
+
+<ion-content>
+<div class="modal">
+<!--<div class="item item-icon-left" >
+  <i class="icon ion-cloud"></i>
+  TimHorton 20170101
+</div>-->
+<!--<ion-list ng-controller="ResumeDataCtrl"
+          show-delete="shouldShowDelete"
+          show-reorder="shouldShowReorder"
+          can-swipe="listCanSwipe">
+  <ion-item ng-repeat="resume in resumes"
+            class="item item-icon-left item-icon-right">
+
+    <i class="icon ion-cloud"></i>
+    {{resume.filename}}
+    <i ng-if="resume.filetype=='Image'" class="badge badge-royal">I</i>
+    <i ng-if="resume.filetype=='PDF'" class="badge badge-assertive">P</i>
+    <i ng-if="resume.filetype=='Text'" class="badge badge-dark">T</i>
+    <i ng-if="resume.filetype=='MS Word'" class="badge badge-energized">M</i>
+    <ion-option-button class="button-positive"
+                       ng-click="openResume(resume)">
+      Open
+    </ion-option-button>
+    <ion-option-button class="button-calm"
+                       ng-click="editResume(resume)">
+      Edit
+    </ion-option-button>
+    <ion-option-button class="button-assertive"
+                       ng-click="resumes.splice($index, 1); deleteResume(resume)">
+      Delete
+    </ion-option-button>
+
+
+
+  </ion-item>
+</ion-list>-->
+    <!--<div class="bar bar-header bar-positive">
+        <button ng-click="$ionicGoBack()" class="button button-clear button-light icon-left ion-chevron-left">Go Back</button>
+    </div>-->
+    <header class="bar bar-header bar-positive">
+      <h1 class="title">I'm A Modal</h1>
+      <div class="button button-clear" ng-click="modal.hide()"><span class="icon ion-close"></span></div>
+    </header>
+
+    <div class="has-header">
+        <ng-pdf  template-url="views/app/pdfviewer.html" canvasid="pdf"  scale="page-fit">
+        </ng-pdf>
+    </div>
+
+
+</ion-content>
+  </div>
+<!--<ion-footer-bar class="footer-bar-custom" ng-if="file.pdfverified">
+  <div style="width: 100%; float:left;padding-top: 5px;" ng-click="uploadResume()" >Uploading</div>
+</ion-footer-bar>-->
+</ion-view>
