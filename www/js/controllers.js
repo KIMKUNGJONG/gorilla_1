@@ -2267,6 +2267,9 @@ $scope.gotoPage = function(selectedItem){
   $scope.goBack = function(){
     $ionicHistory.goBack();
   };
+  $scope.getPrevCache = function(){
+    $ionicHistory.goBack();
+  };
   $scope.gotoMessage = function() {
     $state.go('app.systemMessage');
   };
@@ -3982,7 +3985,8 @@ return {items: []};
     $state.go("app.postJobMain");
   };
   $scope.goBack = function(){
-    $ionicHistory.goBack();
+  $ionicHistory.nextViewOptions({ disableBack: true });
+    $state.go('app.myJobSearchList');
   };
   $scope.gotoMessage = function() {
     $state.go('app.systemMessage');
@@ -6718,6 +6722,17 @@ $scope.logout = function(){
       }
     }
   }
+      $scope.goHome = function(){
+         $ionicHistory.nextViewOptions({ disableBack: true });
+         $state.go("app.postJobMain");
+      };
+      $scope.goBack = function(){
+        $ionicHistory.goBack();
+      };
+      $scope.getPrevCache = function(){
+         $ionicHistory.nextViewOptions({ disableBack: true });
+         $state.go("app.postJob");
+      };
   $scope.onError = function(error) {
     // handle the error
     console.log(error);
@@ -6807,6 +6822,17 @@ $scope.logout = function(){
     $scope.getInterview();
 
   }
+    $scope.goHome = function(){
+       $ionicHistory.nextViewOptions({ disableBack: true });
+       $state.go("app.postJobMain");
+    };
+    $scope.goBack = function(){
+      $ionicHistory.goBack();
+    };
+    $scope.getPrevCache = function(){
+       $ionicHistory.nextViewOptions({ disableBack: true });
+       $state.go("app.postJob");
+    };
   $scope.getInterview = function (){
     LoadingService.showLoading();
     var url='/mobile/get_latest_interview';
@@ -7525,6 +7551,17 @@ return pdc4;
     }
     return uint8Array;
   }
+    $scope.goHome = function(){
+       $ionicHistory.nextViewOptions({ disableBack: true });
+       $state.go("app.postJobMain");
+    };
+    $scope.goBack = function(){
+      $ionicHistory.goBack();
+    };
+    $scope.getPrevCache = function(){
+       $ionicHistory.nextViewOptions({ disableBack: true });
+       $state.go("app.postJob");
+    };
   $scope.getJobdescadd = function(){
     LoadingService.showLoading();
     var url='/mobile/get_latest_jobdescadd';
@@ -7879,6 +7916,17 @@ return pdc3;
       //var modelItem = getModelItem(modelValue);
       return modelValue;
   }
+  $scope.goHome = function(){
+     $ionicHistory.nextViewOptions({ disableBack: true });
+     $state.go("app.postJobMain");
+  };
+  $scope.goBack = function(){
+    $ionicHistory.goBack();
+  };
+  $scope.getPrevCache = function(){
+     $ionicHistory.nextViewOptions({ disableBack: true });
+     $state.go("app.postJob");
+  };
   $scope.getJobdesc = function(){
     LoadingService.showLoading();
     var url='/mobile/get_latest_jobdesc';
@@ -8045,6 +8093,13 @@ return pdc3;
   var pdc1 = this;
 
   pdc1.init  = function() {
+    $scope.goHome = function(){
+        $ionicHistory.nextViewOptions({ disableBack: true });
+        $state.go("app.postJobMain");
+    };
+    $scope.getPrevCache = function(){
+      $ionicHistory.goBack();
+    };
     $scope.posting = {};
     pdc1.getCompanyprofile();
     $scope.autoaddress = {};

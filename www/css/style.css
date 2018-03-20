@@ -1165,19 +1165,21 @@ ion-slide .card2 {
 
 .over_map {
     position: absolute;
-    top: 11px;
+    top: 0px;
     right: 45px;
     z-index: 99;
     background: rgba(255, 255, 255, 0.9);
     border: 1px solid #fff;
-    width: 155px;
-    height: 33px;
+    width: 140px;
+    margin: 10px;
+    height: 25px;
     border-radius: 3px;
     padding: 5px 5px;
 }
 
 .map_count {
     font-size: 15px;
+    padding:0px 8px;
 }
 
 .map_count b {
@@ -1187,7 +1189,7 @@ ion-slide .card2 {
 
 .map_action_icon {
     position: relative;
-    top: 2px;
+    top:-2px;
     float: right;
     font-size: 20px;
     display: flex;
@@ -2064,7 +2066,7 @@ a {
 
 /* ---- 시스템 메세지 ---- */
 .sysm-list {  }
-.sysm-list .item-content { background-color: #fff !important; border-bottom: 1px solid #ccc; padding: 15px 20px; height: 76px; font-weight: 700; color: #222;} 
+.sysm-list .item-content { background-color: #fff !important; border-bottom: 1px solid #ccc; padding: 15px 20px; height: 76px; font-weight: 700; color: #222;}
 .sysm-list .item-content img { float: left; width: 40px; height: 40px; margin-right: 10px;}
 
 .option-btn { height: 100%; padding: 0 20px; color: #fff; width: 80px; font-weight: 700; background-color: #fabc37;}
@@ -2108,7 +2110,7 @@ a {
 
 .ion-ios-people { color: #fabc37 !important; }
 
-.postdetail-p { margin-left: 25px; 
+.postdetail-p { margin-left: 25px;
     position: relative;
     top: 2px; line-height: 28px;
     font-size: 13px;}

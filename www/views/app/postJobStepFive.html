@@ -2,12 +2,12 @@
 
 
     <div class="bar bar-header bar-positive" id="map_header">
-        <button class="button" ng-click="getPrevCache()">Back</button>
+        <button class="button" ng-click="getPrevCache()">Cancel</button>
         <h1 class="title"><span ng-click="goHome()">goRilla</span></h1>
 
     </div>
 
-    
+
    <ion-content class="jobsearch-has-subheader normal-header">
         <div class="content-box">
 
@@ -75,8 +75,8 @@
             </div>
 
               <h5 class="sub-title sub">Confirm</h5>
-            <div class="input-box">          
-           <div> 
+            <div class="input-box">
+           <div>
 			<label class="item item-input input-type1">
 			  <span class="item-text-wrap" style="font-weight:bold;">{{posting.steptwo.title}}</span>
 			</label>
@@ -98,7 +98,7 @@
   			<label class="item item-input item-icon-right input-type1">
   			  <span class="input-label">Location</span>
   			  <span class="item-text-wrap">{{posting.stepone.fulladdress}}</span>
-                
+
             <img src="../../img/icon-target.png" style="width: 20px; height: 20px; position: absolute; right: 20px;" ng-click="openMapLoc(posting.stepone.latitude, posting.stepone.longitude)">
   			</label>
   		</div>
@@ -160,14 +160,14 @@
   <div ng-if="chartOn"  google-chart="Timeline" ng-model="interviewTLData" class="mediumGraph"></div>
        </div>
   </ion-content>
-    
-    
+
+
    <ion-footer-bar class="footer-bar-custom">
 
-        <div class="stepbtn stepbtn-on" style="width: calc(50% - 5px); margin-right: 10px;"><a href="#/app/postJobStepFour" style="" ng-click="">Back</a></div>
+        <div class="stepbtn stepbtn-on" style="width: calc(50% - 5px); margin-right: 10px;"><a href="" style="" ng-click="goBack()">Back</a></div>
 
         <div class="stepbtn stepbtn-active" style="width: calc(50% - 5px);"><a style="" ng-click="postJob()">Post</a></div>
-    </ion-footer-bar>    
-    
-    
+    </ion-footer-bar>
+
+
 </ion-view>
